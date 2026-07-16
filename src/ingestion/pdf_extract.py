@@ -4,26 +4,37 @@ from pathlib import Path
 import fitz
 import random
 
-def extrair_frases_aleatorias():
-    projeto_raiz=Path(__file__).resolve().parents[2]
-    pasta_pdfs=projeto_raiz/"docs"/"PDFs-Instrucoes"
-    pdfs=list(pasta_pdfs.glob("*pdf"))
-    
+def extrair_frase_de(pdf_path: Path) -> dict:
+    """Sorteia uma página de UM PDF específico (passado como argumento)
+    e extrai uma frase de verdade usando PyMuPDF."""
+    doc = fitz.open(pdf_path)
+    pagina_num = random.randint(0, doc.page_count - 1)
+    texto = doc[pagina_num].get_text().strip()
+    total_paginas = doc.page_count
+    doc.close()
+
+    frases = [f.strip() for f in texto.split(".") if len(f.strip()) > 30]
+    frase = random.choice(frases) if frases else "(página sem frase longa, tente de novo)"
+
+    return {
+        "documento": pdf_path.name,
+        "pagina": pagina_num + 1,
+        "total_paginas": total_paginas,
+        "frase": frase,
+    }
+
+
+def extrair_frase_aleatoria():
+    """Sorteia um PDF real de docs/PDFs-Instrucoes e chama extrair_frase_de."""
+    projeto_raiz = Path(__file__).resolve().parents[2]
+    pasta_pdfs = projeto_raiz / "docs" / "PDFs-Instrucoes"
+    pdfs = list(pasta_pdfs.glob("*.pdf"))
+
     if not pdfs:
         return None
-    pdf_escolhido =  random.choice(pdfs)
-    doc = fitz.open(pdf_escolhido)
-    pagina_num = random.randint(0,doc.page_count-1)
-    texto = doc[pagina_num].get_text().strip()
-    doc.close()
-    
-    frase = [f.strip() for f in texto.split(".") if len(f.strip())>30]
-    return {
-        "documento": pdf_escolhido.name,
-        "pagina": pagina_num+1,
-        "total_paginas":None,
-        "frase":frase,
-    }
+
+    pdf_escolhido = random.choice(pdfs)
+    return extrair_frase_de(pdf_escolhido)
 
 def extract_pdf(pdf_path: Path) -> dict:
     doc= fitz.open(pdf_path)

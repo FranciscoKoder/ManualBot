@@ -1,10 +1,24 @@
 
 import random
 import time
+import sys
 from pathlib import Path
 
 import fitz  # PyMuPDF
 import streamlit as st
+
+# Adicionar o diretório src ao path para permitir imports
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+# Importar funções do módulo de ingestão
+from ingestion.pdf_extract import (
+    extrair_frase_de,
+    extrair_frase_aleatoria,
+    extract_pdf,
+    listar_pdfs,
+)
+
+
 
 st.set_page_config(page_title="ManualBot - ESP32", page_icon="🔧", layout="wide")
 
@@ -39,36 +53,13 @@ MOCK_SOURCE = {
 
 
 
-# Função de leitura real (não-mock) - prova de conceito de extração
+# Funções auxiliares
 
-def extrair_frase_aleatoria():
-    """Sorteia um PDF real da pasta docs/PDFs-Instrucoes, sorteia uma página,
-    e extrai uma frase de verdade usando PyMuPDF. Usado só para demonstrar
-    que a leitura dos documentos funciona - não faz parte do pipeline RAG."""
+def carregar_pdfs_reais() -> list[Path]:
+    """Carrega lista real de PDFs da pasta docs/PDFs-Instrucoes."""
     projeto_raiz = Path(__file__).resolve().parents[2]
     pasta_pdfs = projeto_raiz / "docs" / "PDFs-Instrucoes"
-    pdfs = list(pasta_pdfs.glob("*.pdf"))
-
-    if not pdfs:
-        return None
-
-    pdf_escolhido = random.choice(pdfs)
-    doc = fitz.open(pdf_escolhido)
-    pagina_num = random.randint(0, doc.page_count - 1)
-    texto = doc[pagina_num].get_text().strip()
-    total_paginas = doc.page_count
-    doc.close()
-
-    frases = [f.strip() for f in texto.split(".") if len(f.strip()) > 30]
-    frase = random.choice(frases) if frases else "(página sem frase longa, tente de novo)"
-
-    return {
-        "documento": pdf_escolhido.name,
-        "pagina": pagina_num + 1,
-        "total_paginas": total_paginas,
-        "frase": frase,
-    }
-
+    return listar_pdfs(pasta_pdfs)
 
 
 # Estado da sessão
@@ -133,23 +124,98 @@ elif pagina == "Documentos":
     st.divider()
     st.subheader("Prova de leitura (dado real, ao vivo)")
     st.caption(
-        "Sorteia um PDF e uma página reais de docs/PDFs-Instrucoes/ e extrai uma frase "
-        "com PyMuPDF — mostra que a leitura funciona de verdade, sem mock."
+        "Funções do backend `pdf_extract.py` sendo chamadas pela interface Streamlit — "
+        "sem mock, extração real de PDFs."
     )
 
-    if st.button("Provar que estou lendo os PDFs"):
-        with st.spinner("Abrindo PDF e extraindo texto..."):
-            resultado = extrair_frase_aleatoria()
+    # Carregar PDFs reais
+    pdfs_reais = carregar_pdfs_reais()
 
-        if resultado is None:
-            st.error("Nenhum PDF encontrado em docs/PDFs-Instrucoes/.")
-        else:
-            st.success(
-                f"Lido agora: **{resultado['documento']}** "
-                f"(página {resultado['pagina']} de {resultado['total_paginas']})"
+    if not pdfs_reais:
+        st.error("⚠️ Nenhum PDF encontrado em docs/PDFs-Instrucoes/.")
+    else:
+        st.write(f"**{len(pdfs_reais)} PDF(s) encontrado(s)** na pasta de documentos.")
+
+        # Abas para os diferentes modos de leitura
+        tab1, tab2, tab3 = st.tabs(
+            ["📖 Ler PDF Específico", "🎲 Sorteio Aleatório", "📋 Relatório Completo"]
+        )
+
+        # TAB 1: Ler PDF Específico
+        with tab1:
+            st.markdown("**Escolha um PDF e extraia uma frase real dele:**")
+            pdf_escolhido = st.selectbox(
+                "Selecione o documento",
+                pdfs_reais,
+                format_func=lambda p: p.name,
+                key="pdf_selector",
             )
-            st.markdown(f"> \"{resultado['frase']}.\"")
 
+            col1, col2 = st.columns(2)
+            with col1:
+                btn_ler = st.button(
+                    "📖 Ler PDF", key="btn_ler_pdf", use_container_width=True
+                )
+
+            if btn_ler:
+                with st.spinner("Extraindo frase do PDF..."):
+                    resultado = extrair_frase_de(pdf_escolhido)
+
+                if resultado:
+                    st.success(
+                        f"Lido de: **{resultado['documento']}** "
+                        f"(página {resultado['pagina']} de {resultado['total_paginas']})"
+                    )
+                    st.markdown(f'> "{resultado["frase"]}."')
+                else:
+                    st.error("Erro ao ler o PDF.")
+
+        # TAB 2: Sorteio Aleatório
+        with tab2:
+            st.markdown("**Sorteia um PDF aleatório e extrai uma frase dele:**")
+
+            if st.button("🎲 Sortear PDF e Frase", use_container_width=True):
+                with st.spinner("Sorteando e extraindo..."):
+                    resultado = extrair_frase_aleatoria()
+
+                if resultado is None:
+                    st.error("Nenhum PDF encontrado em docs/PDFs-Instrucoes/.")
+                else:
+                    st.success(
+                        f"Sorteado: **{resultado['documento']}** "
+                        f"(página {resultado['pagina']} de {resultado['total_paginas']})"
+                    )
+                    st.markdown(f'> "{resultado["frase"]}."')
+
+        # TAB 3: Relatório Completo
+        with tab3:
+            st.markdown(
+                "**Gere um relatório completo de um PDF** "
+                "(páginas, problemas detectados, conteúdo visual, etc):"
+            )
+
+            pdf_relatorio = st.selectbox(
+                "Selecione o documento para análise",
+                pdfs_reais,
+                format_func=lambda p: p.name,
+                key="pdf_selector_relatorio",
+            )
+
+            if st.button("📋 Gerar Relatório", use_container_width=True):
+                with st.spinner("Analisando PDF..."):
+                    relatorio = extract_pdf(pdf_relatorio)
+
+                st.subheader(f"Relatório: {relatorio['file']}")
+                st.metric("Total de páginas", relatorio["n_pages"])
+                st.metric("Páginas com problema", len(relatorio["problem_pages"]))
+
+                if relatorio["problem_pages"]:
+                    st.warning("**Páginas com possível problema:**")
+                    for pp in relatorio["problem_pages"]:
+                        st.write(f"- Página {pp['page']}: {pp['reason']}")
+
+                with st.expander("📊 Visualizar JSON completo"):
+                    st.json(relatorio)
 
 # Tela: Consultar Manual
 

@@ -1,0 +1,317 @@
+{
+  "file": "esp-hardware-design-guidelines-en-master-esp32.pdf",
+  "n_pages": 38,
+  "sample_extracted_text": "Table of contents\nTable of contents\ni\n1\nLatest Version of This Document\n3\n1.1\nAbout This Document\n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n3\n1.1.1\nIntroduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n3\n1.1.2\nLatest Version of This Document . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n3\n1.2\nProduct Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n3\n1.3\nSchematic Checklist\n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n4\n1.3.1\nOverview\n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n4\n1.3.2\nPower Supply . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n5\n1.3.3\nChip Power-up and Reset Timing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n7\n1.3.4\nFlash and PSRAM . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n8\n1.3.5\nClock Source\n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n9\n1.3.6\nRF . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n11\n1.3.7\nUART . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n13\n1.3.8\nSPI\n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n13\n1.3.9\nStrapping Pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n13\n1.3.10\nGPIO\n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n14\n1.3.11\nADC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n15\n1.3.12\nExternal Capacitor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n16\n1.3.13\nSDIO\n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n16\n1.3.14\nTouch Sensor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n17\n1.3.15\nEthernet MAC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n18\n1.4\nPCB Layout Design . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n18\n1.4.1\nGeneral Principles of PCB Layout for the Chip . . . . . . . . . . . . . . . . . . . . . . .\n19\n1.4.2\nPower Supply . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n19\n1.4.3\nCrystal . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n22\n1.4.4\nRF . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n22\n1.4.5\nFlash and PSRAM . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n25\n1.4.6\nExternal RC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n25\n1.4.7\nUART . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n25\n1.4.8\nGeneral Principles of PCB Layout for Modules (Positioning a Module on a Base Board)\n.\n27\n1.4.9\nSDIO\n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n27\n1.4.10\nTouch Sensor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n28\n1.4.11\nTypical Layout Problems and Solutions . . . . . . . . . . . . . . . . . . . . . . . . . . .\n31\n1.5\nDownload Guidelines . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n31\n1.6\nRelated Documentation and Resources . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n32\n1.6.1\nESP32 Modules . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n32\n1.6.2\nESP32 Development Boards\n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n32\n1.6.3\nOther Related Documentation and Resources . . . . . . . . . . . . . . . . . . . . . . . .\n32\n1.7\nGlossary\n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n33\n1.8\nRevision History\n. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n33\n1.9\nDisclaimer and Copyright Notice . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n34\ni",
+  "pages_summary": [
+    {
+      "page": 1,
+      "n_chars": 78,
+      "n_images": 0,
+      "n_drawings": 17,
+      "n_curves": 98,
+      "has_table_hint": false
+    },
+    {
+      "page": 2,
+      "n_chars": 4209,
+      "n_images": 0,
+      "n_drawings": 1,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 3,
+      "n_chars": 2,
+      "n_images": 0,
+      "n_drawings": 1,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 4,
+      "n_chars": 198,
+      "n_images": 4,
+      "n_drawings": 14,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 5,
+      "n_chars": 77,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 6,
+      "n_chars": 1472,
+      "n_images": 0,
+      "n_drawings": 1,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 7,
+      "n_chars": 1228,
+      "n_images": 1,
+      "n_drawings": 4,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 8,
+      "n_chars": 1717,
+      "n_images": 1,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 9,
+      "n_chars": 1304,
+      "n_images": 1,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 10,
+      "n_chars": 2846,
+      "n_images": 0,
+      "n_drawings": 38,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 11,
+      "n_chars": 2101,
+      "n_images": 1,
+      "n_drawings": 22,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 12,
+      "n_chars": 1946,
+      "n_images": 0,
+      "n_drawings": 53,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 13,
+      "n_chars": 2767,
+      "n_images": 1,
+      "n_drawings": 4,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 14,
+      "n_chars": 1425,
+      "n_images": 2,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 15,
+      "n_chars": 2036,
+      "n_images": 1,
+      "n_drawings": 23,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 16,
+      "n_chars": 2763,
+      "n_images": 0,
+      "n_drawings": 38,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 17,
+      "n_chars": 1810,
+      "n_images": 1,
+      "n_drawings": 28,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 18,
+      "n_chars": 2157,
+      "n_images": 0,
+      "n_drawings": 244,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 19,
+      "n_chars": 2613,
+      "n_images": 0,
+      "n_drawings": 47,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 20,
+      "n_chars": 1803,
+      "n_images": 1,
+      "n_drawings": 37,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 21,
+      "n_chars": 2484,
+      "n_images": 0,
+      "n_drawings": 86,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 22,
+      "n_chars": 1241,
+      "n_images": 1,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 23,
+      "n_chars": 3203,
+      "n_images": 1,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 24,
+      "n_chars": 910,
+      "n_images": 2,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 25,
+      "n_chars": 1833,
+      "n_images": 1,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 26,
+      "n_chars": 1183,
+      "n_images": 2,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 27,
+      "n_chars": 1530,
+      "n_images": 2,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 28,
+      "n_chars": 1709,
+      "n_images": 1,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 29,
+      "n_chars": 168,
+      "n_images": 2,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 30,
+      "n_chars": 2121,
+      "n_images": 1,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 31,
+      "n_chars": 2048,
+      "n_images": 1,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 32,
+      "n_chars": 233,
+      "n_images": 2,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 33,
+      "n_chars": 913,
+      "n_images": 2,
+      "n_drawings": 4,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 34,
+      "n_chars": 3155,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 35,
+      "n_chars": 2009,
+      "n_images": 0,
+      "n_drawings": 6,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 36,
+      "n_chars": 610,
+      "n_images": 0,
+      "n_drawings": 27,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 37,
+      "n_chars": 1898,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 38,
+      "n_chars": 730,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    }
+  ],
+  "problem_pages": [
+    {
+      "page": 1,
+      "reason": "provável esquemático (curvas: 98, traços: 17) — informação visual não capturada no texto"
+    }
+  ]
+}

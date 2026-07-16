@@ -1,0 +1,313 @@
+{
+  "file": "esp-chip-errata-en-master-esp32.pdf",
+  "n_pages": 36,
+  "sample_extracted_text": "Table of contents\nTable of contents\ni\n1\nChip Revision Identification\n1\n1.1\nChip Revision Numbering Scheme\n1\n1.2\nPrimary Identification Methods\n1\n1.3\nAdditional Identification Methods\n3\n1.4\nESP-IDF Release Compatibility\n4\n1.5\nRelated Documents\n5\n2\nErrata Summary\n5\n3\nAll Errata Descriptions\n7\n3.1\n[CPU-3.5] The CPU Crashes When the Clock Frequency Switches\n8\n3.2\n[CPU-3.18] CPU Has Limitations When Accessing Peripherals in Chips\n8\n3.3\n[CPU-3.16] There Are Limitations to the CPU Access to 0x3ff0_0000 ~ 0x3ff1_efff\nand 0x3ff4_0000 ~ 0x3ff7_ffff Address Spaces\n9\n3.4\n[CPU-3.9] When the CPU Accesses External Sram in a Certain Sequence, Read\nand Write Errors May Occur\n10\n3.5\n[CPU-3.2] When the CPU Accesses External Sram Through Cache, Under Certain\nConditions Read and Write Errors Occur\n11\n3.6\n[CPU-3.10] When Each CPU Reads Certain Different Address Spaces Simultane-\nously, a Read Error May Occur\n11\n3.7\n[CPU-3.21] When a CPU Is Interrupted While Accessing Five Specific Fifo Regis-\nters, Subsequent CPU Accesses Will Get Halted\n12\n3.8\n[CPU-3.3] When the CPU Accesses Peripherals and Writes a Single Address Re-\npeatedly, Some Writes May Be Lost\n12\n3.9\n[ULP-3.19] ULP Coprocessor And Touch Sensors Can Not Be Used In Deep-sleep\nMode If RTC_PERIPH Power Domain Is Powered Up\n13\n3.10\n[GPIO-3.6] For Pads With Both GPIO and RTC_GPIO Functionality, the GPIO Pull-\nup and Pull-down Configuration Register Fields Are Nonfunctional\n14\n3.11\n[GPIO-3.14] Within the Same Group of GPIO Pins, Edge Interrupts Cannot Be Used\nTogether With Other Interrupts\n15\n3.12\n[GPIO-3.11] When Certain RTC Peripherals Are Powered on, the Inputs of GPIO36\nand GPIO39 Will Be Pulled Down for Approximately 80 ns\n16\n3.13\n[RES-3.4] The Brown-out Reset (BOR) Function Does Not Work\n16\n3.14\n[RES-3.1] A Spurious Watchdog Reset Occurs When ESP32 Is Powered up or\nWakes up From Deep-sleep\n17\n3.15\n[RES-3.8] Due to the Flash Start-up Time, a Spurious Watchdog Reset Occurs\nWhen ESP32 Is Powered up or Wakes up From Deepsleep\n17\n3.16\n[CLK-3.7] Audio Pll Frequency Range Is Limited\n18\n3.17\n[CLK-3.22] ESP32 Cannot Be Used as the PHY Clock Source If Wi-fi and Ethernet\nAre Used at the Same Time\n19\n3.18\n[RTC-126] RTC Register Read Error After Wake-up from Light-sleep Mode\n19\n3.19\n[WDT-3.15] {idf_target_name} Chip May Have A Live Lock Under Certain Condi-\ntions That Will Cause Interrupt Watchdog Issue\n20\n3.20\n[UART-3.17] UART fifo_cnt Does Not Indicate the Data Length In Fifo Correctly\n20\ni",
+  "pages_summary": [
+    {
+      "page": 1,
+      "n_chars": 36,
+      "n_images": 0,
+      "n_drawings": 16,
+      "n_curves": 98,
+      "has_table_hint": false
+    },
+    {
+      "page": 2,
+      "n_chars": 2459,
+      "n_images": 0,
+      "n_drawings": 0,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 3,
+      "n_chars": 1502,
+      "n_images": 0,
+      "n_drawings": 0,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 4,
+      "n_chars": 1579,
+      "n_images": 0,
+      "n_drawings": 111,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 5,
+      "n_chars": 448,
+      "n_images": 1,
+      "n_drawings": 39,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 6,
+      "n_chars": 921,
+      "n_images": 1,
+      "n_drawings": 39,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 7,
+      "n_chars": 441,
+      "n_images": 1,
+      "n_drawings": 4,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 8,
+      "n_chars": 423,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 9,
+      "n_chars": 1900,
+      "n_images": 0,
+      "n_drawings": 278,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 10,
+      "n_chars": 2059,
+      "n_images": 0,
+      "n_drawings": 311,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 11,
+      "n_chars": 1128,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 12,
+      "n_chars": 1563,
+      "n_images": 0,
+      "n_drawings": 151,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 13,
+      "n_chars": 1793,
+      "n_images": 0,
+      "n_drawings": 4,
+      "n_curves": 12,
+      "has_table_hint": false
+    },
+    {
+      "page": 14,
+      "n_chars": 1401,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 15,
+      "n_chars": 1464,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 16,
+      "n_chars": 1633,
+      "n_images": 0,
+      "n_drawings": 149,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 17,
+      "n_chars": 1618,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 18,
+      "n_chars": 1942,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 19,
+      "n_chars": 1196,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 20,
+      "n_chars": 1295,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 21,
+      "n_chars": 1507,
+      "n_images": 0,
+      "n_drawings": 6,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 22,
+      "n_chars": 1314,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 23,
+      "n_chars": 2267,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 24,
+      "n_chars": 1527,
+      "n_images": 0,
+      "n_drawings": 4,
+      "n_curves": 12,
+      "has_table_hint": false
+    },
+    {
+      "page": 25,
+      "n_chars": 1408,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 26,
+      "n_chars": 1580,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 27,
+      "n_chars": 1676,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 28,
+      "n_chars": 1570,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 29,
+      "n_chars": 1941,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 30,
+      "n_chars": 1450,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 31,
+      "n_chars": 471,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 32,
+      "n_chars": 2100,
+      "n_images": 0,
+      "n_drawings": 91,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 33,
+      "n_chars": 1874,
+      "n_images": 0,
+      "n_drawings": 67,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 34,
+      "n_chars": 1644,
+      "n_images": 0,
+      "n_drawings": 43,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 35,
+      "n_chars": 1928,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 36,
+      "n_chars": 647,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    }
+  ],
+  "problem_pages": [
+    {
+      "page": 1,
+      "reason": "pouco texto + conteúdo visual (possível página escaneada)"
+    },
+    {
+      "page": 10,
+      "reason": "provável esquemático (curvas: 0, traços: 311) — informação visual não capturada no texto"
+    },
+    {
+      "page": 13,
+      "reason": "provável esquemático (curvas: 12, traços: 4) — informação visual não capturada no texto"
+    },
+    {
+      "page": 24,
+      "reason": "provável esquemático (curvas: 12, traços: 4) — informação visual não capturada no texto"
+    }
+  ]
+}

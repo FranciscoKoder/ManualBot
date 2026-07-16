@@ -1,0 +1,413 @@
+{
+  "file": "esp32-wroom-32_datasheet_en.pdf",
+  "n_pages": 45,
+  "sample_extracted_text": "Not Recommended For New Designs (NRND)\n1\nModule Overview\n1\nModule Overview\nNote:\nCheck the link or the QR code to make sure that you use the latest version of this document:\nhttps://espressif.com/documentation/esp32-wroom-32_datasheet_en.pdf\n1.1\nFeatures\nCPU and On-Chip Memory\n• ESP32-D0WDQ6 embedded, Xtensa dual-core\n32-bit LX6 microprocessor, up to 240 MHz\n• 448 KB ROM\n• 520 KB SRAM\n• 8 KB SRAM in RTC\nWi-Fi\n• 802.11b/g/n\n• Bit rate: 802.11n up to 150 Mbps\n• A-MPDU and A-MSDU aggregation\n• 0.4 µs guard interval support\n• Center frequency range of operating channel:\n2412 ~ 2484 MHz\nBluetooth®\n• Bluetooth V4.2 BR/EDR and Bluetooth LE\nspecification\n• Class-1, class-2 and class-3 transmitter\n• AFH\n• CVSD and SBC\nPeripherals\n• Up to 32 GPIOs\n– 5 strapping GPIOs\n• SD card, UART, SPI, SDIO, I2C, LED PWM, Motor\nPWM, I2S, IR, pulse counter, GPIO, capacitive\ntouch sensor, ADC, DAC, TWAI® (compatible\nwith ISO 11898-1, i.e. CAN Specification 2.0)\nIntegrated Components on Module\n• 40 MHz crystal oscillator\n• 4 MB SPI flash\nAntenna Options\n• On-board PCB antenna\nOperating Conditions\n• Operating voltage/Power supply: 3.0 ~ 3.6 V\n• Operating ambient temperature: –40 ~ 85 °C\nCertification\n• RF certification: See certificates for\nESP32-WROOM-32\n• Green certification: REACH/RoHS\nTest\n• HTOL/HTSL/uHAST/TCT/ESD\n1.2\nOrdering Information\nESP32-WROOM-32 is a powerful, generic Wi-Fi + Bluetooth® + Bluetooth LE MCU module that targets a wide\nvariety of applications, ranging from low-power sensor networks to the most demanding tasks, such as voice\nencoding, music streaming and MP3 decoding.\nEspressif Systems\n2\nSubmit Documentation Feedback\nESP32-WROOM-32 Datasheet v3.6",
+  "pages_summary": [
+    {
+      "page": 1,
+      "n_chars": 93,
+      "n_images": 0,
+      "n_drawings": 17,
+      "n_curves": 98,
+      "has_table_hint": false
+    },
+    {
+      "page": 2,
+      "n_chars": 1671,
+      "n_images": 0,
+      "n_drawings": 721,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 3,
+      "n_chars": 1593,
+      "n_images": 0,
+      "n_drawings": 54,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 4,
+      "n_chars": 1373,
+      "n_images": 0,
+      "n_drawings": 13,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 5,
+      "n_chars": 757,
+      "n_images": 0,
+      "n_drawings": 13,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 6,
+      "n_chars": 999,
+      "n_images": 0,
+      "n_drawings": 13,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 7,
+      "n_chars": 489,
+      "n_images": 0,
+      "n_drawings": 13,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 8,
+      "n_chars": 846,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 76,
+      "has_table_hint": false
+    },
+    {
+      "page": 9,
+      "n_chars": 2121,
+      "n_images": 0,
+      "n_drawings": 272,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 10,
+      "n_chars": 510,
+      "n_images": 0,
+      "n_drawings": 48,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 11,
+      "n_chars": 2178,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 12,
+      "n_chars": 1271,
+      "n_images": 0,
+      "n_drawings": 81,
+      "n_curves": 30,
+      "has_table_hint": false
+    },
+    {
+      "page": 13,
+      "n_chars": 948,
+      "n_images": 1,
+      "n_drawings": 14,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 14,
+      "n_chars": 1385,
+      "n_images": 0,
+      "n_drawings": 83,
+      "n_curves": 8,
+      "has_table_hint": false
+    },
+    {
+      "page": 15,
+      "n_chars": 530,
+      "n_images": 0,
+      "n_drawings": 33,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 16,
+      "n_chars": 2610,
+      "n_images": 0,
+      "n_drawings": 21,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 17,
+      "n_chars": 1868,
+      "n_images": 0,
+      "n_drawings": 19,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 18,
+      "n_chars": 1940,
+      "n_images": 0,
+      "n_drawings": 19,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 19,
+      "n_chars": 1978,
+      "n_images": 0,
+      "n_drawings": 19,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 20,
+      "n_chars": 2176,
+      "n_images": 0,
+      "n_drawings": 16,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 21,
+      "n_chars": 2283,
+      "n_images": 0,
+      "n_drawings": 19,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 22,
+      "n_chars": 2015,
+      "n_images": 0,
+      "n_drawings": 17,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 23,
+      "n_chars": 2164,
+      "n_images": 0,
+      "n_drawings": 18,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 24,
+      "n_chars": 2519,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 25,
+      "n_chars": 1240,
+      "n_images": 0,
+      "n_drawings": 76,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 26,
+      "n_chars": 1944,
+      "n_images": 0,
+      "n_drawings": 204,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 27,
+      "n_chars": 2046,
+      "n_images": 0,
+      "n_drawings": 207,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 28,
+      "n_chars": 1528,
+      "n_images": 0,
+      "n_drawings": 199,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 29,
+      "n_chars": 1470,
+      "n_images": 0,
+      "n_drawings": 282,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 30,
+      "n_chars": 1214,
+      "n_images": 0,
+      "n_drawings": 290,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 31,
+      "n_chars": 730,
+      "n_images": 0,
+      "n_drawings": 179,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 32,
+      "n_chars": 184,
+      "n_images": 0,
+      "n_drawings": 13,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 33,
+      "n_chars": 2306,
+      "n_images": 0,
+      "n_drawings": 1146,
+      "n_curves": 203,
+      "has_table_hint": false
+    },
+    {
+      "page": 34,
+      "n_chars": 2131,
+      "n_images": 0,
+      "n_drawings": 511,
+      "n_curves": 48,
+      "has_table_hint": false
+    },
+    {
+      "page": 35,
+      "n_chars": 494,
+      "n_images": 0,
+      "n_drawings": 493,
+      "n_curves": 168,
+      "has_table_hint": false
+    },
+    {
+      "page": 36,
+      "n_chars": 788,
+      "n_images": 0,
+      "n_drawings": 468,
+      "n_curves": 44,
+      "has_table_hint": false
+    },
+    {
+      "page": 37,
+      "n_chars": 545,
+      "n_images": 0,
+      "n_drawings": 14,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 38,
+      "n_chars": 1323,
+      "n_images": 0,
+      "n_drawings": 37,
+      "n_curves": 17,
+      "has_table_hint": false
+    },
+    {
+      "page": 39,
+      "n_chars": 477,
+      "n_images": 0,
+      "n_drawings": 13,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 40,
+      "n_chars": 1394,
+      "n_images": 0,
+      "n_drawings": 67,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 41,
+      "n_chars": 2593,
+      "n_images": 0,
+      "n_drawings": 73,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 42,
+      "n_chars": 2088,
+      "n_images": 0,
+      "n_drawings": 80,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 43,
+      "n_chars": 2568,
+      "n_images": 0,
+      "n_drawings": 87,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 44,
+      "n_chars": 1806,
+      "n_images": 0,
+      "n_drawings": 173,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 45,
+      "n_chars": 1121,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 98,
+      "has_table_hint": false
+    }
+  ],
+  "problem_pages": [
+    {
+      "page": 1,
+      "reason": "provável esquemático (curvas: 98, traços: 17) — informação visual não capturada no texto"
+    },
+    {
+      "page": 2,
+      "reason": "provável esquemático (curvas: 0, traços: 721) — informação visual não capturada no texto"
+    },
+    {
+      "page": 8,
+      "reason": "provável esquemático (curvas: 76, traços: 122) — informação visual não capturada no texto"
+    },
+    {
+      "page": 12,
+      "reason": "provável esquemático (curvas: 30, traços: 81) — informação visual não capturada no texto"
+    },
+    {
+      "page": 14,
+      "reason": "provável esquemático (curvas: 8, traços: 83) — informação visual não capturada no texto"
+    },
+    {
+      "page": 33,
+      "reason": "provável esquemático (curvas: 203, traços: 1146) — informação visual não capturada no texto"
+    },
+    {
+      "page": 34,
+      "reason": "provável esquemático (curvas: 48, traços: 511) — informação visual não capturada no texto"
+    },
+    {
+      "page": 35,
+      "reason": "provável esquemático (curvas: 168, traços: 493) — informação visual não capturada no texto"
+    },
+    {
+      "page": 36,
+      "reason": "provável esquemático (curvas: 44, traços: 468) — informação visual não capturada no texto"
+    },
+    {
+      "page": 38,
+      "reason": "provável esquemático (curvas: 17, traços: 37) — informação visual não capturada no texto"
+    },
+    {
+      "page": 45,
+      "reason": "provável esquemático (curvas: 98, traços: 26) — informação visual não capturada no texto"
+    }
+  ]
+}

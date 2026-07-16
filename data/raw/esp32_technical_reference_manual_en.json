@@ -1,0 +1,6849 @@
+{
+  "file": "esp32_technical_reference_manual_en.pdf",
+  "n_pages": 783,
+  "sample_extracted_text": "About This Document\nThe ESP32 Technical Reference Manual is targeted at developers working on low level software projects that\nuse the ESP32 SoC. It describes the hardware modules listed below for the ESP32 SoC and other products in\nESP32 series. The modules detailed in this document provide an overview, list of features, hardware\narchitecture details, any necessary programming procedures, as well as register descriptions.\nNavigation in This Document\nHere are some tips on navigation through this extensive document:\n• Release Status at a Glance on the very next page is a minimal list of all chapters from where you can\ndirectly jump to a specific chapter.\n• Use the Bookmarks on the side bar to jump to any specific chapters or sections from anywhere in the\ndocument. Note this PDF document is configured to automatically display Bookmarks when open, which\nis necessary for an extensive document like this one. However, some PDF viewers or browsers ignore\nthis setting, so if you don’t see the Bookmarks by default, try one or more of the following methods:\n– Install a PDF Reader Extension for your browser;\n– Download this document, and view it with your local PDF viewer;\n– Set your PDF viewer to always automatically display the Bookmarks on the left side bar when open.\n• Use the native Navigation function of your PDF viewer to navigate through the documents. Most PDF\nviewers support to go Up, Down, Previous, Next, Back, Forward and Page with buttons, menu, or hot\nkeys.\n• You can also use the built-in GoBack button on the upper right corner on each and every page to go\nback to the previous place before you click a link within the document. Note this feature may only work\nwith some Acrobat-specific PDF viewers (for example, Acrobat Reader and Adobe DC) and browsers with\nbuilt-in Acrobat-specific PDF viewers or extensions (for example, Firefox).",
+  "pages_summary": [
+    {
+      "page": 1,
+      "n_chars": 62,
+      "n_images": 0,
+      "n_drawings": 16,
+      "n_curves": 98,
+      "has_table_hint": false
+    },
+    {
+      "page": 2,
+      "n_chars": 1865,
+      "n_images": 0,
+      "n_drawings": 0,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 3,
+      "n_chars": 1610,
+      "n_images": 0,
+      "n_drawings": 223,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 4,
+      "n_chars": 286,
+      "n_images": 0,
+      "n_drawings": 697,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 5,
+      "n_chars": 1514,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 6,
+      "n_chars": 1195,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 7,
+      "n_chars": 1434,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 8,
+      "n_chars": 1349,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 9,
+      "n_chars": 1238,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 10,
+      "n_chars": 1265,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 11,
+      "n_chars": 1320,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 12,
+      "n_chars": 1291,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 13,
+      "n_chars": 1586,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 14,
+      "n_chars": 1489,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 15,
+      "n_chars": 1442,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 16,
+      "n_chars": 1481,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 17,
+      "n_chars": 1186,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 18,
+      "n_chars": 474,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 19,
+      "n_chars": 1788,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 20,
+      "n_chars": 1807,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 21,
+      "n_chars": 2106,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 22,
+      "n_chars": 145,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 23,
+      "n_chars": 1585,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 24,
+      "n_chars": 1716,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 25,
+      "n_chars": 1687,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 26,
+      "n_chars": 2152,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 27,
+      "n_chars": 1062,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 28,
+      "n_chars": 318,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 29,
+      "n_chars": 1122,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 30,
+      "n_chars": 1591,
+      "n_images": 0,
+      "n_drawings": 51,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 31,
+      "n_chars": 2273,
+      "n_images": 0,
+      "n_drawings": 38,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 32,
+      "n_chars": 1454,
+      "n_images": 0,
+      "n_drawings": 31,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 33,
+      "n_chars": 1832,
+      "n_images": 0,
+      "n_drawings": 56,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 34,
+      "n_chars": 2030,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 35,
+      "n_chars": 1619,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 36,
+      "n_chars": 1418,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 37,
+      "n_chars": 1646,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 38,
+      "n_chars": 1337,
+      "n_images": 0,
+      "n_drawings": 137,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 39,
+      "n_chars": 1815,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 40,
+      "n_chars": 1548,
+      "n_images": 0,
+      "n_drawings": 224,
+      "n_curves": 3567,
+      "has_table_hint": false
+    },
+    {
+      "page": 41,
+      "n_chars": 1886,
+      "n_images": 0,
+      "n_drawings": 772,
+      "n_curves": 2402,
+      "has_table_hint": false
+    },
+    {
+      "page": 42,
+      "n_chars": 2360,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 43,
+      "n_chars": 1909,
+      "n_images": 0,
+      "n_drawings": 162,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 44,
+      "n_chars": 340,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 45,
+      "n_chars": 2056,
+      "n_images": 0,
+      "n_drawings": 206,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 46,
+      "n_chars": 226,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 47,
+      "n_chars": 1229,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 48,
+      "n_chars": 869,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 49,
+      "n_chars": 1258,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 50,
+      "n_chars": 961,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 51,
+      "n_chars": 1262,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 52,
+      "n_chars": 1208,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 53,
+      "n_chars": 1297,
+      "n_images": 0,
+      "n_drawings": 98,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 54,
+      "n_chars": 888,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 55,
+      "n_chars": 384,
+      "n_images": 0,
+      "n_drawings": 18,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 56,
+      "n_chars": 1585,
+      "n_images": 0,
+      "n_drawings": 3,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 57,
+      "n_chars": 1407,
+      "n_images": 0,
+      "n_drawings": 196,
+      "n_curves": 2389,
+      "has_table_hint": false
+    },
+    {
+      "page": 58,
+      "n_chars": 2202,
+      "n_images": 0,
+      "n_drawings": 98,
+      "n_curves": 956,
+      "has_table_hint": false
+    },
+    {
+      "page": 59,
+      "n_chars": 2257,
+      "n_images": 0,
+      "n_drawings": 189,
+      "n_curves": 1123,
+      "has_table_hint": false
+    },
+    {
+      "page": 60,
+      "n_chars": 2722,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 61,
+      "n_chars": 350,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 62,
+      "n_chars": 322,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 63,
+      "n_chars": 1435,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 64,
+      "n_chars": 405,
+      "n_images": 0,
+      "n_drawings": 91,
+      "n_curves": 1004,
+      "has_table_hint": false
+    },
+    {
+      "page": 65,
+      "n_chars": 146,
+      "n_images": 0,
+      "n_drawings": 564,
+      "n_curves": 9649,
+      "has_table_hint": false
+    },
+    {
+      "page": 66,
+      "n_chars": 2374,
+      "n_images": 0,
+      "n_drawings": 135,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 67,
+      "n_chars": 514,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 68,
+      "n_chars": 2448,
+      "n_images": 0,
+      "n_drawings": 247,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 69,
+      "n_chars": 2816,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 70,
+      "n_chars": 2135,
+      "n_images": 0,
+      "n_drawings": 70,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 71,
+      "n_chars": 1514,
+      "n_images": 0,
+      "n_drawings": 308,
+      "n_curves": 3064,
+      "has_table_hint": false
+    },
+    {
+      "page": 72,
+      "n_chars": 2308,
+      "n_images": 0,
+      "n_drawings": 312,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 73,
+      "n_chars": 2278,
+      "n_images": 0,
+      "n_drawings": 309,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 74,
+      "n_chars": 1343,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 75,
+      "n_chars": 2005,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 76,
+      "n_chars": 2793,
+      "n_images": 0,
+      "n_drawings": 104,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 77,
+      "n_chars": 2604,
+      "n_images": 0,
+      "n_drawings": 65,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 78,
+      "n_chars": 2678,
+      "n_images": 0,
+      "n_drawings": 44,
+      "n_curves": 1,
+      "has_table_hint": false
+    },
+    {
+      "page": 79,
+      "n_chars": 1530,
+      "n_images": 0,
+      "n_drawings": 182,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 80,
+      "n_chars": 2149,
+      "n_images": 0,
+      "n_drawings": 182,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 81,
+      "n_chars": 3156,
+      "n_images": 0,
+      "n_drawings": 112,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 82,
+      "n_chars": 2497,
+      "n_images": 0,
+      "n_drawings": 346,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 83,
+      "n_chars": 2395,
+      "n_images": 0,
+      "n_drawings": 43,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 84,
+      "n_chars": 2158,
+      "n_images": 0,
+      "n_drawings": 233,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 85,
+      "n_chars": 2506,
+      "n_images": 0,
+      "n_drawings": 168,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 86,
+      "n_chars": 3128,
+      "n_images": 0,
+      "n_drawings": 30,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 87,
+      "n_chars": 2104,
+      "n_images": 0,
+      "n_drawings": 140,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 88,
+      "n_chars": 2963,
+      "n_images": 0,
+      "n_drawings": 52,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 89,
+      "n_chars": 2096,
+      "n_images": 0,
+      "n_drawings": 204,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 90,
+      "n_chars": 1211,
+      "n_images": 0,
+      "n_drawings": 79,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 91,
+      "n_chars": 1549,
+      "n_images": 0,
+      "n_drawings": 78,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 92,
+      "n_chars": 1563,
+      "n_images": 0,
+      "n_drawings": 191,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 93,
+      "n_chars": 2529,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 94,
+      "n_chars": 2270,
+      "n_images": 0,
+      "n_drawings": 36,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 95,
+      "n_chars": 2022,
+      "n_images": 0,
+      "n_drawings": 167,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 96,
+      "n_chars": 1846,
+      "n_images": 0,
+      "n_drawings": 307,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 97,
+      "n_chars": 2434,
+      "n_images": 0,
+      "n_drawings": 44,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 98,
+      "n_chars": 2254,
+      "n_images": 0,
+      "n_drawings": 239,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 99,
+      "n_chars": 306,
+      "n_images": 0,
+      "n_drawings": 64,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 100,
+      "n_chars": 1777,
+      "n_images": 0,
+      "n_drawings": 195,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 101,
+      "n_chars": 3225,
+      "n_images": 0,
+      "n_drawings": 309,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 102,
+      "n_chars": 2300,
+      "n_images": 0,
+      "n_drawings": 238,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 103,
+      "n_chars": 1364,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 104,
+      "n_chars": 1412,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 105,
+      "n_chars": 1190,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 106,
+      "n_chars": 1765,
+      "n_images": 0,
+      "n_drawings": 130,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 107,
+      "n_chars": 1406,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 108,
+      "n_chars": 1660,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 109,
+      "n_chars": 1492,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 110,
+      "n_chars": 1011,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 111,
+      "n_chars": 1041,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 112,
+      "n_chars": 1204,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 113,
+      "n_chars": 604,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 114,
+      "n_chars": 309,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 115,
+      "n_chars": 1663,
+      "n_images": 0,
+      "n_drawings": 312,
+      "n_curves": 4370,
+      "has_table_hint": false
+    },
+    {
+      "page": 116,
+      "n_chars": 1642,
+      "n_images": 0,
+      "n_drawings": 137,
+      "n_curves": 1433,
+      "has_table_hint": false
+    },
+    {
+      "page": 117,
+      "n_chars": 1679,
+      "n_images": 1,
+      "n_drawings": 6,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 118,
+      "n_chars": 2458,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 119,
+      "n_chars": 1969,
+      "n_images": 0,
+      "n_drawings": 38,
+      "n_curves": 28,
+      "has_table_hint": false
+    },
+    {
+      "page": 120,
+      "n_chars": 2099,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 121,
+      "n_chars": 2439,
+      "n_images": 0,
+      "n_drawings": 44,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 122,
+      "n_chars": 2024,
+      "n_images": 0,
+      "n_drawings": 80,
+      "n_curves": 4,
+      "has_table_hint": false
+    },
+    {
+      "page": 123,
+      "n_chars": 1782,
+      "n_images": 0,
+      "n_drawings": 113,
+      "n_curves": 4,
+      "has_table_hint": false
+    },
+    {
+      "page": 124,
+      "n_chars": 1605,
+      "n_images": 0,
+      "n_drawings": 80,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 125,
+      "n_chars": 1259,
+      "n_images": 0,
+      "n_drawings": 260,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 126,
+      "n_chars": 1145,
+      "n_images": 0,
+      "n_drawings": 260,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 127,
+      "n_chars": 1400,
+      "n_images": 0,
+      "n_drawings": 260,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 128,
+      "n_chars": 1306,
+      "n_images": 0,
+      "n_drawings": 260,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 129,
+      "n_chars": 1342,
+      "n_images": 0,
+      "n_drawings": 260,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 130,
+      "n_chars": 1334,
+      "n_images": 0,
+      "n_drawings": 260,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 131,
+      "n_chars": 1186,
+      "n_images": 0,
+      "n_drawings": 260,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 132,
+      "n_chars": 610,
+      "n_images": 0,
+      "n_drawings": 126,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 133,
+      "n_chars": 2326,
+      "n_images": 0,
+      "n_drawings": 469,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 134,
+      "n_chars": 1717,
+      "n_images": 0,
+      "n_drawings": 258,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 135,
+      "n_chars": 2817,
+      "n_images": 0,
+      "n_drawings": 288,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 136,
+      "n_chars": 2702,
+      "n_images": 0,
+      "n_drawings": 287,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 137,
+      "n_chars": 2803,
+      "n_images": 0,
+      "n_drawings": 268,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 138,
+      "n_chars": 1825,
+      "n_images": 0,
+      "n_drawings": 110,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 139,
+      "n_chars": 1093,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 140,
+      "n_chars": 1213,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 141,
+      "n_chars": 1193,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 142,
+      "n_chars": 1126,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 143,
+      "n_chars": 1360,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 144,
+      "n_chars": 1134,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 145,
+      "n_chars": 567,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 146,
+      "n_chars": 1671,
+      "n_images": 0,
+      "n_drawings": 98,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 147,
+      "n_chars": 1042,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 148,
+      "n_chars": 1126,
+      "n_images": 0,
+      "n_drawings": 35,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 149,
+      "n_chars": 2446,
+      "n_images": 0,
+      "n_drawings": 100,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 150,
+      "n_chars": 1086,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 151,
+      "n_chars": 1134,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 152,
+      "n_chars": 1275,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 153,
+      "n_chars": 1152,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 154,
+      "n_chars": 1518,
+      "n_images": 0,
+      "n_drawings": 105,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 155,
+      "n_chars": 1588,
+      "n_images": 0,
+      "n_drawings": 202,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 156,
+      "n_chars": 1144,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 157,
+      "n_chars": 1767,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 158,
+      "n_chars": 1766,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 159,
+      "n_chars": 2569,
+      "n_images": 0,
+      "n_drawings": 202,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 160,
+      "n_chars": 1144,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 161,
+      "n_chars": 1888,
+      "n_images": 0,
+      "n_drawings": 139,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 162,
+      "n_chars": 809,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 163,
+      "n_chars": 1416,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 164,
+      "n_chars": 984,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 165,
+      "n_chars": 1104,
+      "n_images": 0,
+      "n_drawings": 86,
+      "n_curves": 744,
+      "has_table_hint": false
+    },
+    {
+      "page": 166,
+      "n_chars": 1417,
+      "n_images": 0,
+      "n_drawings": 137,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 167,
+      "n_chars": 1007,
+      "n_images": 1,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 168,
+      "n_chars": 1651,
+      "n_images": 0,
+      "n_drawings": 145,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 169,
+      "n_chars": 1429,
+      "n_images": 0,
+      "n_drawings": 148,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 170,
+      "n_chars": 2204,
+      "n_images": 0,
+      "n_drawings": 21,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 171,
+      "n_chars": 2018,
+      "n_images": 0,
+      "n_drawings": 77,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 172,
+      "n_chars": 1303,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 173,
+      "n_chars": 947,
+      "n_images": 0,
+      "n_drawings": 43,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 174,
+      "n_chars": 762,
+      "n_images": 0,
+      "n_drawings": 353,
+      "n_curves": 5278,
+      "has_table_hint": false
+    },
+    {
+      "page": 175,
+      "n_chars": 700,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 176,
+      "n_chars": 4937,
+      "n_images": 0,
+      "n_drawings": 753,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 177,
+      "n_chars": 1865,
+      "n_images": 0,
+      "n_drawings": 267,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 178,
+      "n_chars": 1454,
+      "n_images": 0,
+      "n_drawings": 239,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 179,
+      "n_chars": 2389,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 180,
+      "n_chars": 899,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 181,
+      "n_chars": 974,
+      "n_images": 0,
+      "n_drawings": 463,
+      "n_curves": 3036,
+      "has_table_hint": false
+    },
+    {
+      "page": 182,
+      "n_chars": 1243,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 584,
+      "has_table_hint": false
+    },
+    {
+      "page": 183,
+      "n_chars": 1245,
+      "n_images": 0,
+      "n_drawings": 62,
+      "n_curves": 396,
+      "has_table_hint": false
+    },
+    {
+      "page": 184,
+      "n_chars": 1313,
+      "n_images": 0,
+      "n_drawings": 199,
+      "n_curves": 1810,
+      "has_table_hint": false
+    },
+    {
+      "page": 185,
+      "n_chars": 1119,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 186,
+      "n_chars": 983,
+      "n_images": 0,
+      "n_drawings": 615,
+      "n_curves": 5330,
+      "has_table_hint": false
+    },
+    {
+      "page": 187,
+      "n_chars": 1250,
+      "n_images": 0,
+      "n_drawings": 151,
+      "n_curves": 1200,
+      "has_table_hint": false
+    },
+    {
+      "page": 188,
+      "n_chars": 1970,
+      "n_images": 0,
+      "n_drawings": 154,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 189,
+      "n_chars": 1603,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 190,
+      "n_chars": 844,
+      "n_images": 0,
+      "n_drawings": 283,
+      "n_curves": 5271,
+      "has_table_hint": false
+    },
+    {
+      "page": 191,
+      "n_chars": 2227,
+      "n_images": 0,
+      "n_drawings": 92,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 192,
+      "n_chars": 2560,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 193,
+      "n_chars": 194,
+      "n_images": 0,
+      "n_drawings": 1245,
+      "n_curves": 5033,
+      "has_table_hint": false
+    },
+    {
+      "page": 194,
+      "n_chars": 2525,
+      "n_images": 0,
+      "n_drawings": 227,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 195,
+      "n_chars": 1959,
+      "n_images": 0,
+      "n_drawings": 177,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 196,
+      "n_chars": 2157,
+      "n_images": 0,
+      "n_drawings": 202,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 197,
+      "n_chars": 862,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 198,
+      "n_chars": 723,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 199,
+      "n_chars": 943,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 200,
+      "n_chars": 758,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 201,
+      "n_chars": 1437,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 202,
+      "n_chars": 492,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 203,
+      "n_chars": 1395,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 204,
+      "n_chars": 1416,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 205,
+      "n_chars": 1417,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 206,
+      "n_chars": 1509,
+      "n_images": 0,
+      "n_drawings": 90,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 207,
+      "n_chars": 1200,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 208,
+      "n_chars": 1094,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 209,
+      "n_chars": 424,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 210,
+      "n_chars": 1609,
+      "n_images": 0,
+      "n_drawings": 130,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 211,
+      "n_chars": 1239,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 212,
+      "n_chars": 1135,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 213,
+      "n_chars": 2354,
+      "n_images": 0,
+      "n_drawings": 178,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 214,
+      "n_chars": 2613,
+      "n_images": 0,
+      "n_drawings": 226,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 215,
+      "n_chars": 434,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 216,
+      "n_chars": 2346,
+      "n_images": 0,
+      "n_drawings": 194,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 217,
+      "n_chars": 1955,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 218,
+      "n_chars": 676,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 219,
+      "n_chars": 895,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 220,
+      "n_chars": 2291,
+      "n_images": 0,
+      "n_drawings": 154,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 221,
+      "n_chars": 640,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 222,
+      "n_chars": 1231,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 223,
+      "n_chars": 1931,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 224,
+      "n_chars": 3060,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 225,
+      "n_chars": 2747,
+      "n_images": 0,
+      "n_drawings": 268,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 226,
+      "n_chars": 339,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 227,
+      "n_chars": 1721,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 228,
+      "n_chars": 1050,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 229,
+      "n_chars": 1739,
+      "n_images": 0,
+      "n_drawings": 98,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 230,
+      "n_chars": 939,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 231,
+      "n_chars": 1060,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 232,
+      "n_chars": 1327,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 233,
+      "n_chars": 1029,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 234,
+      "n_chars": 2071,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 235,
+      "n_chars": 2557,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 236,
+      "n_chars": 328,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 237,
+      "n_chars": 1367,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 238,
+      "n_chars": 2261,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 239,
+      "n_chars": 2609,
+      "n_images": 0,
+      "n_drawings": 285,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 240,
+      "n_chars": 2723,
+      "n_images": 0,
+      "n_drawings": 316,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 241,
+      "n_chars": 2714,
+      "n_images": 0,
+      "n_drawings": 316,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 242,
+      "n_chars": 2325,
+      "n_images": 0,
+      "n_drawings": 254,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 243,
+      "n_chars": 2785,
+      "n_images": 0,
+      "n_drawings": 281,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 244,
+      "n_chars": 1732,
+      "n_images": 0,
+      "n_drawings": 169,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 245,
+      "n_chars": 2146,
+      "n_images": 0,
+      "n_drawings": 189,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 246,
+      "n_chars": 1091,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 247,
+      "n_chars": 1123,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 248,
+      "n_chars": 839,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 249,
+      "n_chars": 888,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 250,
+      "n_chars": 1223,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 251,
+      "n_chars": 888,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 252,
+      "n_chars": 1223,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 253,
+      "n_chars": 952,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 254,
+      "n_chars": 306,
+      "n_images": 0,
+      "n_drawings": 18,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 255,
+      "n_chars": 1786,
+      "n_images": 0,
+      "n_drawings": 226,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 256,
+      "n_chars": 1797,
+      "n_images": 0,
+      "n_drawings": 274,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 257,
+      "n_chars": 1346,
+      "n_images": 0,
+      "n_drawings": 98,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 258,
+      "n_chars": 1270,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 259,
+      "n_chars": 2057,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 260,
+      "n_chars": 1718,
+      "n_images": 0,
+      "n_drawings": 18,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 261,
+      "n_chars": 2089,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 262,
+      "n_chars": 1762,
+      "n_images": 0,
+      "n_drawings": 18,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 263,
+      "n_chars": 2079,
+      "n_images": 0,
+      "n_drawings": 18,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 264,
+      "n_chars": 1208,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 265,
+      "n_chars": 1434,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 266,
+      "n_chars": 1081,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 267,
+      "n_chars": 949,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 268,
+      "n_chars": 1493,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 269,
+      "n_chars": 1827,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 270,
+      "n_chars": 547,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 271,
+      "n_chars": 1952,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 272,
+      "n_chars": 2196,
+      "n_images": 0,
+      "n_drawings": 87,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 273,
+      "n_chars": 2491,
+      "n_images": 0,
+      "n_drawings": 80,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 274,
+      "n_chars": 762,
+      "n_images": 1,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 275,
+      "n_chars": 2315,
+      "n_images": 0,
+      "n_drawings": 169,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 276,
+      "n_chars": 1005,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 277,
+      "n_chars": 976,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 278,
+      "n_chars": 788,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 279,
+      "n_chars": 855,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 280,
+      "n_chars": 375,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 281,
+      "n_chars": 1400,
+      "n_images": 0,
+      "n_drawings": 41,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 282,
+      "n_chars": 3607,
+      "n_images": 0,
+      "n_drawings": 237,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 283,
+      "n_chars": 6664,
+      "n_images": 0,
+      "n_drawings": 611,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 284,
+      "n_chars": 1838,
+      "n_images": 0,
+      "n_drawings": 117,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 285,
+      "n_chars": 1154,
+      "n_images": 0,
+      "n_drawings": 89,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 286,
+      "n_chars": 556,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 287,
+      "n_chars": 1813,
+      "n_images": 0,
+      "n_drawings": 4,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 288,
+      "n_chars": 1960,
+      "n_images": 0,
+      "n_drawings": 14,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 289,
+      "n_chars": 2540,
+      "n_images": 0,
+      "n_drawings": 6,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 290,
+      "n_chars": 1952,
+      "n_images": 0,
+      "n_drawings": 91,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 291,
+      "n_chars": 955,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 292,
+      "n_chars": 1037,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 293,
+      "n_chars": 1753,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 294,
+      "n_chars": 2239,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 295,
+      "n_chars": 2899,
+      "n_images": 0,
+      "n_drawings": 260,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 296,
+      "n_chars": 1262,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 297,
+      "n_chars": 1061,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 298,
+      "n_chars": 693,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 299,
+      "n_chars": 701,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 300,
+      "n_chars": 712,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 301,
+      "n_chars": 693,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 302,
+      "n_chars": 321,
+      "n_images": 0,
+      "n_drawings": 18,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 303,
+      "n_chars": 1031,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 304,
+      "n_chars": 1731,
+      "n_images": 0,
+      "n_drawings": 640,
+      "n_curves": 4556,
+      "has_table_hint": false
+    },
+    {
+      "page": 305,
+      "n_chars": 3210,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 306,
+      "n_chars": 2735,
+      "n_images": 0,
+      "n_drawings": 92,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 307,
+      "n_chars": 1018,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 308,
+      "n_chars": 1765,
+      "n_images": 0,
+      "n_drawings": 35,
+      "n_curves": 8,
+      "has_table_hint": false
+    },
+    {
+      "page": 309,
+      "n_chars": 1796,
+      "n_images": 0,
+      "n_drawings": 31,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 310,
+      "n_chars": 383,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 311,
+      "n_chars": 1648,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 312,
+      "n_chars": 2217,
+      "n_images": 0,
+      "n_drawings": 451,
+      "n_curves": 3896,
+      "has_table_hint": false
+    },
+    {
+      "page": 313,
+      "n_chars": 2260,
+      "n_images": 1,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 314,
+      "n_chars": 2577,
+      "n_images": 0,
+      "n_drawings": 202,
+      "n_curves": 2212,
+      "has_table_hint": false
+    },
+    {
+      "page": 315,
+      "n_chars": 2013,
+      "n_images": 0,
+      "n_drawings": 151,
+      "n_curves": 1134,
+      "has_table_hint": false
+    },
+    {
+      "page": 316,
+      "n_chars": 1933,
+      "n_images": 0,
+      "n_drawings": 318,
+      "n_curves": 2489,
+      "has_table_hint": false
+    },
+    {
+      "page": 317,
+      "n_chars": 2600,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 318,
+      "n_chars": 2190,
+      "n_images": 0,
+      "n_drawings": 31,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 319,
+      "n_chars": 1891,
+      "n_images": 0,
+      "n_drawings": 185,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 320,
+      "n_chars": 2030,
+      "n_images": 0,
+      "n_drawings": 193,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 321,
+      "n_chars": 1468,
+      "n_images": 0,
+      "n_drawings": 139,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 322,
+      "n_chars": 668,
+      "n_images": 0,
+      "n_drawings": 18,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 323,
+      "n_chars": 2338,
+      "n_images": 0,
+      "n_drawings": 162,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 324,
+      "n_chars": 491,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 325,
+      "n_chars": 2160,
+      "n_images": 0,
+      "n_drawings": 162,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 326,
+      "n_chars": 674,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 327,
+      "n_chars": 2380,
+      "n_images": 0,
+      "n_drawings": 162,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 328,
+      "n_chars": 384,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 329,
+      "n_chars": 2548,
+      "n_images": 0,
+      "n_drawings": 162,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 330,
+      "n_chars": 770,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 331,
+      "n_chars": 1868,
+      "n_images": 0,
+      "n_drawings": 98,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 332,
+      "n_chars": 2729,
+      "n_images": 0,
+      "n_drawings": 210,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 333,
+      "n_chars": 882,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 334,
+      "n_chars": 1935,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 335,
+      "n_chars": 653,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 336,
+      "n_chars": 1248,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 337,
+      "n_chars": 1329,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 338,
+      "n_chars": 1460,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 339,
+      "n_chars": 1229,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 340,
+      "n_chars": 1661,
+      "n_images": 0,
+      "n_drawings": 130,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 341,
+      "n_chars": 950,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 342,
+      "n_chars": 1628,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 343,
+      "n_chars": 1958,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 344,
+      "n_chars": 2111,
+      "n_images": 0,
+      "n_drawings": 146,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 345,
+      "n_chars": 380,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 346,
+      "n_chars": 2213,
+      "n_images": 0,
+      "n_drawings": 146,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 347,
+      "n_chars": 2078,
+      "n_images": 0,
+      "n_drawings": 146,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 348,
+      "n_chars": 1040,
+      "n_images": 0,
+      "n_drawings": 90,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 349,
+      "n_chars": 1487,
+      "n_images": 0,
+      "n_drawings": 98,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 350,
+      "n_chars": 1226,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 351,
+      "n_chars": 1142,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 352,
+      "n_chars": 1594,
+      "n_images": 0,
+      "n_drawings": 90,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 353,
+      "n_chars": 1697,
+      "n_images": 0,
+      "n_drawings": 90,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 354,
+      "n_chars": 1919,
+      "n_images": 0,
+      "n_drawings": 253,
+      "n_curves": 1207,
+      "has_table_hint": false
+    },
+    {
+      "page": 355,
+      "n_chars": 1151,
+      "n_images": 0,
+      "n_drawings": 39,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 356,
+      "n_chars": 2514,
+      "n_images": 0,
+      "n_drawings": 57,
+      "n_curves": 1117,
+      "has_table_hint": false
+    },
+    {
+      "page": 357,
+      "n_chars": 2525,
+      "n_images": 0,
+      "n_drawings": 30,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 358,
+      "n_chars": 2242,
+      "n_images": 0,
+      "n_drawings": 73,
+      "n_curves": 875,
+      "has_table_hint": false
+    },
+    {
+      "page": 359,
+      "n_chars": 1552,
+      "n_images": 0,
+      "n_drawings": 149,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 360,
+      "n_chars": 2865,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 361,
+      "n_chars": 1399,
+      "n_images": 0,
+      "n_drawings": 301,
+      "n_curves": 2008,
+      "has_table_hint": false
+    },
+    {
+      "page": 362,
+      "n_chars": 1872,
+      "n_images": 0,
+      "n_drawings": 525,
+      "n_curves": 2293,
+      "has_table_hint": false
+    },
+    {
+      "page": 363,
+      "n_chars": 2031,
+      "n_images": 0,
+      "n_drawings": 162,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 364,
+      "n_chars": 2513,
+      "n_images": 0,
+      "n_drawings": 315,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 365,
+      "n_chars": 1160,
+      "n_images": 0,
+      "n_drawings": 136,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 366,
+      "n_chars": 1183,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 367,
+      "n_chars": 1406,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 368,
+      "n_chars": 293,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 369,
+      "n_chars": 2220,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 370,
+      "n_chars": 1182,
+      "n_images": 0,
+      "n_drawings": 43,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 371,
+      "n_chars": 2307,
+      "n_images": 0,
+      "n_drawings": 186,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 372,
+      "n_chars": 1313,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 373,
+      "n_chars": 1199,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 374,
+      "n_chars": 1517,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 375,
+      "n_chars": 2398,
+      "n_images": 0,
+      "n_drawings": 162,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 376,
+      "n_chars": 2027,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 377,
+      "n_chars": 1590,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 378,
+      "n_chars": 1104,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 379,
+      "n_chars": 584,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 380,
+      "n_chars": 1948,
+      "n_images": 0,
+      "n_drawings": 170,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 381,
+      "n_chars": 985,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 382,
+      "n_chars": 1348,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 383,
+      "n_chars": 1377,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 384,
+      "n_chars": 1385,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 385,
+      "n_chars": 1757,
+      "n_images": 0,
+      "n_drawings": 98,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 386,
+      "n_chars": 1155,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 387,
+      "n_chars": 1055,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 388,
+      "n_chars": 464,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 389,
+      "n_chars": 2024,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 390,
+      "n_chars": 1148,
+      "n_images": 0,
+      "n_drawings": 608,
+      "n_curves": 6834,
+      "has_table_hint": false
+    },
+    {
+      "page": 391,
+      "n_chars": 2249,
+      "n_images": 0,
+      "n_drawings": 267,
+      "n_curves": 1932,
+      "has_table_hint": false
+    },
+    {
+      "page": 392,
+      "n_chars": 2235,
+      "n_images": 0,
+      "n_drawings": 178,
+      "n_curves": 2600,
+      "has_table_hint": false
+    },
+    {
+      "page": 393,
+      "n_chars": 2857,
+      "n_images": 0,
+      "n_drawings": 223,
+      "n_curves": 3318,
+      "has_table_hint": false
+    },
+    {
+      "page": 394,
+      "n_chars": 2408,
+      "n_images": 0,
+      "n_drawings": 255,
+      "n_curves": 3935,
+      "has_table_hint": false
+    },
+    {
+      "page": 395,
+      "n_chars": 1588,
+      "n_images": 0,
+      "n_drawings": 229,
+      "n_curves": 3278,
+      "has_table_hint": false
+    },
+    {
+      "page": 396,
+      "n_chars": 954,
+      "n_images": 0,
+      "n_drawings": 562,
+      "n_curves": 8069,
+      "has_table_hint": false
+    },
+    {
+      "page": 397,
+      "n_chars": 1605,
+      "n_images": 0,
+      "n_drawings": 258,
+      "n_curves": 3743,
+      "has_table_hint": false
+    },
+    {
+      "page": 398,
+      "n_chars": 1448,
+      "n_images": 0,
+      "n_drawings": 554,
+      "n_curves": 8175,
+      "has_table_hint": false
+    },
+    {
+      "page": 399,
+      "n_chars": 1252,
+      "n_images": 0,
+      "n_drawings": 673,
+      "n_curves": 9150,
+      "has_table_hint": false
+    },
+    {
+      "page": 400,
+      "n_chars": 373,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 401,
+      "n_chars": 2390,
+      "n_images": 0,
+      "n_drawings": 224,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 402,
+      "n_chars": 976,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 403,
+      "n_chars": 1785,
+      "n_images": 0,
+      "n_drawings": 90,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 404,
+      "n_chars": 1988,
+      "n_images": 0,
+      "n_drawings": 138,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 405,
+      "n_chars": 1437,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 406,
+      "n_chars": 1357,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 407,
+      "n_chars": 1878,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 408,
+      "n_chars": 1735,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 409,
+      "n_chars": 1844,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 410,
+      "n_chars": 1897,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 411,
+      "n_chars": 958,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 412,
+      "n_chars": 1091,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 413,
+      "n_chars": 1247,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 414,
+      "n_chars": 723,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 415,
+      "n_chars": 1603,
+      "n_images": 0,
+      "n_drawings": 1044,
+      "n_curves": 5427,
+      "has_table_hint": false
+    },
+    {
+      "page": 416,
+      "n_chars": 2794,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 417,
+      "n_chars": 1557,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 418,
+      "n_chars": 1720,
+      "n_images": 0,
+      "n_drawings": 92,
+      "n_curves": 758,
+      "has_table_hint": false
+    },
+    {
+      "page": 419,
+      "n_chars": 2003,
+      "n_images": 0,
+      "n_drawings": 561,
+      "n_curves": 1666,
+      "has_table_hint": false
+    },
+    {
+      "page": 420,
+      "n_chars": 1983,
+      "n_images": 0,
+      "n_drawings": 263,
+      "n_curves": 594,
+      "has_table_hint": false
+    },
+    {
+      "page": 421,
+      "n_chars": 1982,
+      "n_images": 0,
+      "n_drawings": 220,
+      "n_curves": 2376,
+      "has_table_hint": false
+    },
+    {
+      "page": 422,
+      "n_chars": 2305,
+      "n_images": 0,
+      "n_drawings": 136,
+      "n_curves": 1201,
+      "has_table_hint": false
+    },
+    {
+      "page": 423,
+      "n_chars": 1363,
+      "n_images": 0,
+      "n_drawings": 276,
+      "n_curves": 3160,
+      "has_table_hint": false
+    },
+    {
+      "page": 424,
+      "n_chars": 2838,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 708,
+      "has_table_hint": false
+    },
+    {
+      "page": 425,
+      "n_chars": 1464,
+      "n_images": 0,
+      "n_drawings": 143,
+      "n_curves": 1446,
+      "has_table_hint": false
+    },
+    {
+      "page": 426,
+      "n_chars": 1519,
+      "n_images": 0,
+      "n_drawings": 116,
+      "n_curves": 1492,
+      "has_table_hint": false
+    },
+    {
+      "page": 427,
+      "n_chars": 1673,
+      "n_images": 0,
+      "n_drawings": 356,
+      "n_curves": 2767,
+      "has_table_hint": false
+    },
+    {
+      "page": 428,
+      "n_chars": 1677,
+      "n_images": 0,
+      "n_drawings": 137,
+      "n_curves": 1897,
+      "has_table_hint": false
+    },
+    {
+      "page": 429,
+      "n_chars": 1904,
+      "n_images": 0,
+      "n_drawings": 641,
+      "n_curves": 2097,
+      "has_table_hint": false
+    },
+    {
+      "page": 430,
+      "n_chars": 2242,
+      "n_images": 0,
+      "n_drawings": 156,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 431,
+      "n_chars": 1709,
+      "n_images": 0,
+      "n_drawings": 163,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 432,
+      "n_chars": 726,
+      "n_images": 0,
+      "n_drawings": 18,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 433,
+      "n_chars": 2054,
+      "n_images": 0,
+      "n_drawings": 162,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 434,
+      "n_chars": 2163,
+      "n_images": 0,
+      "n_drawings": 146,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 435,
+      "n_chars": 2180,
+      "n_images": 0,
+      "n_drawings": 146,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 436,
+      "n_chars": 2111,
+      "n_images": 0,
+      "n_drawings": 146,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 437,
+      "n_chars": 1981,
+      "n_images": 0,
+      "n_drawings": 146,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 438,
+      "n_chars": 1787,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 439,
+      "n_chars": 1207,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 440,
+      "n_chars": 1437,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 441,
+      "n_chars": 1193,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 442,
+      "n_chars": 695,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 443,
+      "n_chars": 1809,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 444,
+      "n_chars": 859,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 445,
+      "n_chars": 1201,
+      "n_images": 0,
+      "n_drawings": 90,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 446,
+      "n_chars": 1268,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 447,
+      "n_chars": 628,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 448,
+      "n_chars": 2041,
+      "n_images": 0,
+      "n_drawings": 130,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 449,
+      "n_chars": 633,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 450,
+      "n_chars": 866,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 451,
+      "n_chars": 1799,
+      "n_images": 0,
+      "n_drawings": 787,
+      "n_curves": 7090,
+      "has_table_hint": false
+    },
+    {
+      "page": 452,
+      "n_chars": 2445,
+      "n_images": 0,
+      "n_drawings": 81,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 453,
+      "n_chars": 1264,
+      "n_images": 0,
+      "n_drawings": 414,
+      "n_curves": 1414,
+      "has_table_hint": false
+    },
+    {
+      "page": 454,
+      "n_chars": 2631,
+      "n_images": 0,
+      "n_drawings": 261,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 455,
+      "n_chars": 761,
+      "n_images": 0,
+      "n_drawings": 55,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 456,
+      "n_chars": 2572,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 457,
+      "n_chars": 1398,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 458,
+      "n_chars": 1248,
+      "n_images": 0,
+      "n_drawings": 162,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 459,
+      "n_chars": 1019,
+      "n_images": 0,
+      "n_drawings": 146,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 460,
+      "n_chars": 1898,
+      "n_images": 0,
+      "n_drawings": 202,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 461,
+      "n_chars": 1411,
+      "n_images": 0,
+      "n_drawings": 411,
+      "n_curves": 683,
+      "has_table_hint": false
+    },
+    {
+      "page": 462,
+      "n_chars": 2638,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 463,
+      "n_chars": 2196,
+      "n_images": 0,
+      "n_drawings": 2140,
+      "n_curves": 862,
+      "has_table_hint": false
+    },
+    {
+      "page": 464,
+      "n_chars": 3479,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 465,
+      "n_chars": 3894,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 466,
+      "n_chars": 3183,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 467,
+      "n_chars": 3028,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 468,
+      "n_chars": 2660,
+      "n_images": 0,
+      "n_drawings": 150,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 469,
+      "n_chars": 1781,
+      "n_images": 0,
+      "n_drawings": 53,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 470,
+      "n_chars": 1358,
+      "n_images": 0,
+      "n_drawings": 507,
+      "n_curves": 536,
+      "has_table_hint": false
+    },
+    {
+      "page": 471,
+      "n_chars": 3721,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 472,
+      "n_chars": 875,
+      "n_images": 0,
+      "n_drawings": 1454,
+      "n_curves": 1299,
+      "has_table_hint": false
+    },
+    {
+      "page": 473,
+      "n_chars": 1336,
+      "n_images": 0,
+      "n_drawings": 1053,
+      "n_curves": 1193,
+      "has_table_hint": false
+    },
+    {
+      "page": 474,
+      "n_chars": 1289,
+      "n_images": 0,
+      "n_drawings": 561,
+      "n_curves": 1176,
+      "has_table_hint": false
+    },
+    {
+      "page": 475,
+      "n_chars": 1902,
+      "n_images": 0,
+      "n_drawings": 104,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 476,
+      "n_chars": 2259,
+      "n_images": 0,
+      "n_drawings": 55,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 477,
+      "n_chars": 2218,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 478,
+      "n_chars": 2791,
+      "n_images": 0,
+      "n_drawings": 77,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 479,
+      "n_chars": 1819,
+      "n_images": 0,
+      "n_drawings": 71,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 480,
+      "n_chars": 2007,
+      "n_images": 0,
+      "n_drawings": 94,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 481,
+      "n_chars": 2902,
+      "n_images": 0,
+      "n_drawings": 85,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 482,
+      "n_chars": 2481,
+      "n_images": 0,
+      "n_drawings": 87,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 483,
+      "n_chars": 1575,
+      "n_images": 0,
+      "n_drawings": 130,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 484,
+      "n_chars": 2079,
+      "n_images": 0,
+      "n_drawings": 44,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 485,
+      "n_chars": 2158,
+      "n_images": 0,
+      "n_drawings": 222,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 486,
+      "n_chars": 2168,
+      "n_images": 0,
+      "n_drawings": 166,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 487,
+      "n_chars": 301,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 488,
+      "n_chars": 2615,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 489,
+      "n_chars": 2333,
+      "n_images": 0,
+      "n_drawings": 18,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 490,
+      "n_chars": 1506,
+      "n_images": 0,
+      "n_drawings": 202,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 491,
+      "n_chars": 1813,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 492,
+      "n_chars": 2164,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 493,
+      "n_chars": 2532,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 494,
+      "n_chars": 2829,
+      "n_images": 0,
+      "n_drawings": 170,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 495,
+      "n_chars": 923,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 496,
+      "n_chars": 1533,
+      "n_images": 0,
+      "n_drawings": 138,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 497,
+      "n_chars": 2622,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 498,
+      "n_chars": 2104,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 499,
+      "n_chars": 963,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 500,
+      "n_chars": 2841,
+      "n_images": 0,
+      "n_drawings": 194,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 501,
+      "n_chars": 2694,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 502,
+      "n_chars": 2404,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 503,
+      "n_chars": 2829,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 504,
+      "n_chars": 2015,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 505,
+      "n_chars": 447,
+      "n_images": 0,
+      "n_drawings": 18,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 506,
+      "n_chars": 2521,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 507,
+      "n_chars": 1188,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 508,
+      "n_chars": 2078,
+      "n_images": 0,
+      "n_drawings": 138,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 509,
+      "n_chars": 937,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 510,
+      "n_chars": 1569,
+      "n_images": 0,
+      "n_drawings": 10,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 511,
+      "n_chars": 1545,
+      "n_images": 0,
+      "n_drawings": 98,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 512,
+      "n_chars": 2346,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 513,
+      "n_chars": 1777,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 514,
+      "n_chars": 1407,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 515,
+      "n_chars": 1663,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 516,
+      "n_chars": 1666,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 517,
+      "n_chars": 1669,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 518,
+      "n_chars": 1666,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 519,
+      "n_chars": 1666,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 520,
+      "n_chars": 1670,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 521,
+      "n_chars": 1669,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 522,
+      "n_chars": 1252,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 523,
+      "n_chars": 1530,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 524,
+      "n_chars": 670,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 525,
+      "n_chars": 1602,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 526,
+      "n_chars": 3094,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 527,
+      "n_chars": 2439,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 528,
+      "n_chars": 1304,
+      "n_images": 0,
+      "n_drawings": 904,
+      "n_curves": 6452,
+      "has_table_hint": false
+    },
+    {
+      "page": 529,
+      "n_chars": 2558,
+      "n_images": 0,
+      "n_drawings": 180,
+      "n_curves": 1057,
+      "has_table_hint": false
+    },
+    {
+      "page": 530,
+      "n_chars": 2298,
+      "n_images": 0,
+      "n_drawings": 166,
+      "n_curves": 1167,
+      "has_table_hint": false
+    },
+    {
+      "page": 531,
+      "n_chars": 2103,
+      "n_images": 0,
+      "n_drawings": 138,
+      "n_curves": 1218,
+      "has_table_hint": false
+    },
+    {
+      "page": 532,
+      "n_chars": 2754,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 533,
+      "n_chars": 2888,
+      "n_images": 0,
+      "n_drawings": 15,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 534,
+      "n_chars": 2844,
+      "n_images": 0,
+      "n_drawings": 24,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 535,
+      "n_chars": 1065,
+      "n_images": 0,
+      "n_drawings": 365,
+      "n_curves": 3416,
+      "has_table_hint": false
+    },
+    {
+      "page": 536,
+      "n_chars": 2872,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 537,
+      "n_chars": 2871,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 538,
+      "n_chars": 2743,
+      "n_images": 0,
+      "n_drawings": 72,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 539,
+      "n_chars": 2514,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 540,
+      "n_chars": 2594,
+      "n_images": 0,
+      "n_drawings": 55,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 541,
+      "n_chars": 2850,
+      "n_images": 0,
+      "n_drawings": 125,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 542,
+      "n_chars": 1754,
+      "n_images": 0,
+      "n_drawings": 212,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 543,
+      "n_chars": 3416,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 544,
+      "n_chars": 1187,
+      "n_images": 0,
+      "n_drawings": 964,
+      "n_curves": 6353,
+      "has_table_hint": false
+    },
+    {
+      "page": 545,
+      "n_chars": 2727,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 546,
+      "n_chars": 747,
+      "n_images": 0,
+      "n_drawings": 964,
+      "n_curves": 5566,
+      "has_table_hint": false
+    },
+    {
+      "page": 547,
+      "n_chars": 1971,
+      "n_images": 0,
+      "n_drawings": 361,
+      "n_curves": 4463,
+      "has_table_hint": false
+    },
+    {
+      "page": 548,
+      "n_chars": 1791,
+      "n_images": 0,
+      "n_drawings": 237,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 549,
+      "n_chars": 1834,
+      "n_images": 0,
+      "n_drawings": 308,
+      "n_curves": 1161,
+      "has_table_hint": true
+    },
+    {
+      "page": 550,
+      "n_chars": 2024,
+      "n_images": 0,
+      "n_drawings": 138,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 551,
+      "n_chars": 1277,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": true
+    },
+    {
+      "page": 552,
+      "n_chars": 826,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 553,
+      "n_chars": 826,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 554,
+      "n_chars": 827,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 555,
+      "n_chars": 828,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 556,
+      "n_chars": 848,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 557,
+      "n_chars": 1177,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 558,
+      "n_chars": 1783,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 559,
+      "n_chars": 1280,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 560,
+      "n_chars": 635,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 561,
+      "n_chars": 1523,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 562,
+      "n_chars": 967,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 563,
+      "n_chars": 1238,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 564,
+      "n_chars": 2002,
+      "n_images": 0,
+      "n_drawings": 239,
+      "n_curves": 3332,
+      "has_table_hint": false
+    },
+    {
+      "page": 565,
+      "n_chars": 2050,
+      "n_images": 0,
+      "n_drawings": 258,
+      "n_curves": 4533,
+      "has_table_hint": false
+    },
+    {
+      "page": 566,
+      "n_chars": 737,
+      "n_images": 0,
+      "n_drawings": 124,
+      "n_curves": 960,
+      "has_table_hint": false
+    },
+    {
+      "page": 567,
+      "n_chars": 970,
+      "n_images": 0,
+      "n_drawings": 290,
+      "n_curves": 3744,
+      "has_table_hint": false
+    },
+    {
+      "page": 568,
+      "n_chars": 1179,
+      "n_images": 0,
+      "n_drawings": 181,
+      "n_curves": 2995,
+      "has_table_hint": false
+    },
+    {
+      "page": 569,
+      "n_chars": 1842,
+      "n_images": 0,
+      "n_drawings": 419,
+      "n_curves": 2078,
+      "has_table_hint": false
+    },
+    {
+      "page": 570,
+      "n_chars": 2425,
+      "n_images": 0,
+      "n_drawings": 116,
+      "n_curves": 1156,
+      "has_table_hint": false
+    },
+    {
+      "page": 571,
+      "n_chars": 2281,
+      "n_images": 0,
+      "n_drawings": 165,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 572,
+      "n_chars": 1434,
+      "n_images": 0,
+      "n_drawings": 150,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 573,
+      "n_chars": 1460,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 574,
+      "n_chars": 2641,
+      "n_images": 0,
+      "n_drawings": 178,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 575,
+      "n_chars": 2635,
+      "n_images": 0,
+      "n_drawings": 178,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 576,
+      "n_chars": 2720,
+      "n_images": 0,
+      "n_drawings": 178,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 577,
+      "n_chars": 2383,
+      "n_images": 0,
+      "n_drawings": 178,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 578,
+      "n_chars": 1284,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 579,
+      "n_chars": 1090,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 580,
+      "n_chars": 1116,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 581,
+      "n_chars": 1155,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 582,
+      "n_chars": 327,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 583,
+      "n_chars": 1958,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 584,
+      "n_chars": 1968,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 585,
+      "n_chars": 1102,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 586,
+      "n_chars": 1354,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 587,
+      "n_chars": 922,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 588,
+      "n_chars": 1366,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 589,
+      "n_chars": 1367,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 590,
+      "n_chars": 1368,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 591,
+      "n_chars": 1368,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 592,
+      "n_chars": 745,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 593,
+      "n_chars": 1841,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 594,
+      "n_chars": 2063,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 595,
+      "n_chars": 1729,
+      "n_images": 0,
+      "n_drawings": 90,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 596,
+      "n_chars": 429,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 597,
+      "n_chars": 954,
+      "n_images": 0,
+      "n_drawings": 118,
+      "n_curves": 1605,
+      "has_table_hint": false
+    },
+    {
+      "page": 598,
+      "n_chars": 1296,
+      "n_images": 0,
+      "n_drawings": 218,
+      "n_curves": 2112,
+      "has_table_hint": false
+    },
+    {
+      "page": 599,
+      "n_chars": 1208,
+      "n_images": 0,
+      "n_drawings": 287,
+      "n_curves": 3019,
+      "has_table_hint": false
+    },
+    {
+      "page": 600,
+      "n_chars": 1764,
+      "n_images": 0,
+      "n_drawings": 190,
+      "n_curves": 4068,
+      "has_table_hint": false
+    },
+    {
+      "page": 601,
+      "n_chars": 1596,
+      "n_images": 0,
+      "n_drawings": 596,
+      "n_curves": 13598,
+      "has_table_hint": false
+    },
+    {
+      "page": 602,
+      "n_chars": 2462,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 603,
+      "n_chars": 1665,
+      "n_images": 0,
+      "n_drawings": 92,
+      "n_curves": 1298,
+      "has_table_hint": false
+    },
+    {
+      "page": 604,
+      "n_chars": 1466,
+      "n_images": 0,
+      "n_drawings": 289,
+      "n_curves": 3043,
+      "has_table_hint": false
+    },
+    {
+      "page": 605,
+      "n_chars": 1791,
+      "n_images": 0,
+      "n_drawings": 99,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 606,
+      "n_chars": 2770,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 607,
+      "n_chars": 2114,
+      "n_images": 0,
+      "n_drawings": 127,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 608,
+      "n_chars": 1229,
+      "n_images": 0,
+      "n_drawings": 182,
+      "n_curves": 2420,
+      "has_table_hint": false
+    },
+    {
+      "page": 609,
+      "n_chars": 2565,
+      "n_images": 0,
+      "n_drawings": 161,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 610,
+      "n_chars": 1171,
+      "n_images": 0,
+      "n_drawings": 107,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 611,
+      "n_chars": 2775,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 612,
+      "n_chars": 2355,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 613,
+      "n_chars": 1059,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 614,
+      "n_chars": 1413,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 615,
+      "n_chars": 1628,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 616,
+      "n_chars": 2460,
+      "n_images": 0,
+      "n_drawings": 194,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 617,
+      "n_chars": 2590,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 618,
+      "n_chars": 1126,
+      "n_images": 0,
+      "n_drawings": 18,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 619,
+      "n_chars": 1410,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 620,
+      "n_chars": 1370,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 621,
+      "n_chars": 1519,
+      "n_images": 0,
+      "n_drawings": 98,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 622,
+      "n_chars": 2290,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 623,
+      "n_chars": 874,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 624,
+      "n_chars": 1078,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 625,
+      "n_chars": 2165,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 626,
+      "n_chars": 2596,
+      "n_images": 0,
+      "n_drawings": 98,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 627,
+      "n_chars": 1817,
+      "n_images": 0,
+      "n_drawings": 90,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 628,
+      "n_chars": 1231,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 629,
+      "n_chars": 1727,
+      "n_images": 0,
+      "n_drawings": 300,
+      "n_curves": 2716,
+      "has_table_hint": false
+    },
+    {
+      "page": 630,
+      "n_chars": 2268,
+      "n_images": 0,
+      "n_drawings": 628,
+      "n_curves": 4539,
+      "has_table_hint": false
+    },
+    {
+      "page": 631,
+      "n_chars": 2341,
+      "n_images": 0,
+      "n_drawings": 60,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 632,
+      "n_chars": 1959,
+      "n_images": 0,
+      "n_drawings": 345,
+      "n_curves": 2720,
+      "has_table_hint": false
+    },
+    {
+      "page": 633,
+      "n_chars": 1901,
+      "n_images": 0,
+      "n_drawings": 67,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 634,
+      "n_chars": 2392,
+      "n_images": 0,
+      "n_drawings": 201,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 635,
+      "n_chars": 3254,
+      "n_images": 0,
+      "n_drawings": 274,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 636,
+      "n_chars": 2848,
+      "n_images": 0,
+      "n_drawings": 241,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 637,
+      "n_chars": 1291,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 638,
+      "n_chars": 1646,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 639,
+      "n_chars": 1082,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 640,
+      "n_chars": 921,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 641,
+      "n_chars": 1333,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 642,
+      "n_chars": 1345,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 643,
+      "n_chars": 1466,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 644,
+      "n_chars": 2824,
+      "n_images": 0,
+      "n_drawings": 402,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 645,
+      "n_chars": 2785,
+      "n_images": 0,
+      "n_drawings": 402,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 646,
+      "n_chars": 362,
+      "n_images": 0,
+      "n_drawings": 18,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 647,
+      "n_chars": 1821,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 648,
+      "n_chars": 1256,
+      "n_images": 0,
+      "n_drawings": 506,
+      "n_curves": 2838,
+      "has_table_hint": false
+    },
+    {
+      "page": 649,
+      "n_chars": 1236,
+      "n_images": 0,
+      "n_drawings": 36,
+      "n_curves": 439,
+      "has_table_hint": false
+    },
+    {
+      "page": 650,
+      "n_chars": 1259,
+      "n_images": 0,
+      "n_drawings": 145,
+      "n_curves": 1974,
+      "has_table_hint": false
+    },
+    {
+      "page": 651,
+      "n_chars": 1239,
+      "n_images": 0,
+      "n_drawings": 203,
+      "n_curves": 2697,
+      "has_table_hint": false
+    },
+    {
+      "page": 652,
+      "n_chars": 1263,
+      "n_images": 0,
+      "n_drawings": 101,
+      "n_curves": 834,
+      "has_table_hint": false
+    },
+    {
+      "page": 653,
+      "n_chars": 1870,
+      "n_images": 0,
+      "n_drawings": 29,
+      "n_curves": 294,
+      "has_table_hint": false
+    },
+    {
+      "page": 654,
+      "n_chars": 1031,
+      "n_images": 0,
+      "n_drawings": 202,
+      "n_curves": 2608,
+      "has_table_hint": false
+    },
+    {
+      "page": 655,
+      "n_chars": 935,
+      "n_images": 0,
+      "n_drawings": 188,
+      "n_curves": 2608,
+      "has_table_hint": false
+    },
+    {
+      "page": 656,
+      "n_chars": 312,
+      "n_images": 0,
+      "n_drawings": 182,
+      "n_curves": 1084,
+      "has_table_hint": false
+    },
+    {
+      "page": 657,
+      "n_chars": 2057,
+      "n_images": 0,
+      "n_drawings": 121,
+      "n_curves": 1134,
+      "has_table_hint": false
+    },
+    {
+      "page": 658,
+      "n_chars": 1879,
+      "n_images": 0,
+      "n_drawings": 214,
+      "n_curves": 3435,
+      "has_table_hint": false
+    },
+    {
+      "page": 659,
+      "n_chars": 2467,
+      "n_images": 0,
+      "n_drawings": 81,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 660,
+      "n_chars": 2145,
+      "n_images": 0,
+      "n_drawings": 90,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 661,
+      "n_chars": 1861,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 662,
+      "n_chars": 460,
+      "n_images": 0,
+      "n_drawings": 286,
+      "n_curves": 3487,
+      "has_table_hint": false
+    },
+    {
+      "page": 663,
+      "n_chars": 440,
+      "n_images": 0,
+      "n_drawings": 232,
+      "n_curves": 954,
+      "has_table_hint": false
+    },
+    {
+      "page": 664,
+      "n_chars": 385,
+      "n_images": 0,
+      "n_drawings": 206,
+      "n_curves": 930,
+      "has_table_hint": false
+    },
+    {
+      "page": 665,
+      "n_chars": 502,
+      "n_images": 0,
+      "n_drawings": 186,
+      "n_curves": 976,
+      "has_table_hint": false
+    },
+    {
+      "page": 666,
+      "n_chars": 658,
+      "n_images": 0,
+      "n_drawings": 199,
+      "n_curves": 1258,
+      "has_table_hint": false
+    },
+    {
+      "page": 667,
+      "n_chars": 1024,
+      "n_images": 0,
+      "n_drawings": 239,
+      "n_curves": 1090,
+      "has_table_hint": false
+    },
+    {
+      "page": 668,
+      "n_chars": 810,
+      "n_images": 0,
+      "n_drawings": 269,
+      "n_curves": 1862,
+      "has_table_hint": false
+    },
+    {
+      "page": 669,
+      "n_chars": 1176,
+      "n_images": 0,
+      "n_drawings": 311,
+      "n_curves": 2758,
+      "has_table_hint": false
+    },
+    {
+      "page": 670,
+      "n_chars": 1990,
+      "n_images": 0,
+      "n_drawings": 152,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 671,
+      "n_chars": 254,
+      "n_images": 0,
+      "n_drawings": 144,
+      "n_curves": 1332,
+      "has_table_hint": false
+    },
+    {
+      "page": 672,
+      "n_chars": 965,
+      "n_images": 0,
+      "n_drawings": 144,
+      "n_curves": 1332,
+      "has_table_hint": false
+    },
+    {
+      "page": 673,
+      "n_chars": 1321,
+      "n_images": 0,
+      "n_drawings": 349,
+      "n_curves": 464,
+      "has_table_hint": false
+    },
+    {
+      "page": 674,
+      "n_chars": 1413,
+      "n_images": 0,
+      "n_drawings": 279,
+      "n_curves": 476,
+      "has_table_hint": false
+    },
+    {
+      "page": 675,
+      "n_chars": 1244,
+      "n_images": 0,
+      "n_drawings": 141,
+      "n_curves": 1375,
+      "has_table_hint": false
+    },
+    {
+      "page": 676,
+      "n_chars": 3340,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 677,
+      "n_chars": 2648,
+      "n_images": 0,
+      "n_drawings": 140,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 678,
+      "n_chars": 2441,
+      "n_images": 0,
+      "n_drawings": 233,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 679,
+      "n_chars": 2549,
+      "n_images": 0,
+      "n_drawings": 253,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 680,
+      "n_chars": 1624,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 681,
+      "n_chars": 1368,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 682,
+      "n_chars": 939,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 683,
+      "n_chars": 1301,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 684,
+      "n_chars": 930,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 685,
+      "n_chars": 1303,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 686,
+      "n_chars": 1663,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 687,
+      "n_chars": 1988,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 688,
+      "n_chars": 1282,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 689,
+      "n_chars": 1614,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 690,
+      "n_chars": 1550,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 691,
+      "n_chars": 1550,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 692,
+      "n_chars": 1730,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 693,
+      "n_chars": 1141,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 694,
+      "n_chars": 2620,
+      "n_images": 0,
+      "n_drawings": 138,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 695,
+      "n_chars": 1063,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 696,
+      "n_chars": 1721,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 697,
+      "n_chars": 869,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 698,
+      "n_chars": 1614,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 699,
+      "n_chars": 1550,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 700,
+      "n_chars": 1550,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 701,
+      "n_chars": 1726,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 702,
+      "n_chars": 1138,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 703,
+      "n_chars": 2665,
+      "n_images": 0,
+      "n_drawings": 138,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 704,
+      "n_chars": 1063,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 705,
+      "n_chars": 1723,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 706,
+      "n_chars": 865,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 707,
+      "n_chars": 1584,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 708,
+      "n_chars": 1550,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 709,
+      "n_chars": 1550,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 710,
+      "n_chars": 1729,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 711,
+      "n_chars": 1142,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 712,
+      "n_chars": 2620,
+      "n_images": 0,
+      "n_drawings": 138,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 713,
+      "n_chars": 1062,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 714,
+      "n_chars": 1816,
+      "n_images": 0,
+      "n_drawings": 122,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 715,
+      "n_chars": 998,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 716,
+      "n_chars": 1590,
+      "n_images": 0,
+      "n_drawings": 98,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 717,
+      "n_chars": 912,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 718,
+      "n_chars": 1409,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 719,
+      "n_chars": 3239,
+      "n_images": 0,
+      "n_drawings": 250,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 720,
+      "n_chars": 887,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 721,
+      "n_chars": 3314,
+      "n_images": 0,
+      "n_drawings": 250,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 722,
+      "n_chars": 908,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 723,
+      "n_chars": 2929,
+      "n_images": 0,
+      "n_drawings": 250,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 724,
+      "n_chars": 1321,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 725,
+      "n_chars": 3101,
+      "n_images": 0,
+      "n_drawings": 250,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 726,
+      "n_chars": 971,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 727,
+      "n_chars": 2656,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 728,
+      "n_chars": 1062,
+      "n_images": 0,
+      "n_drawings": 870,
+      "n_curves": 8447,
+      "has_table_hint": false
+    },
+    {
+      "page": 729,
+      "n_chars": 3198,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 730,
+      "n_chars": 2665,
+      "n_images": 0,
+      "n_drawings": 240,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 731,
+      "n_chars": 2105,
+      "n_images": 0,
+      "n_drawings": 112,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 732,
+      "n_chars": 1889,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 733,
+      "n_chars": 2788,
+      "n_images": 0,
+      "n_drawings": 514,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 734,
+      "n_chars": 2757,
+      "n_images": 0,
+      "n_drawings": 514,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 735,
+      "n_chars": 1205,
+      "n_images": 0,
+      "n_drawings": 58,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 736,
+      "n_chars": 314,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 737,
+      "n_chars": 1217,
+      "n_images": 0,
+      "n_drawings": 188,
+      "n_curves": 879,
+      "has_table_hint": false
+    },
+    {
+      "page": 738,
+      "n_chars": 1876,
+      "n_images": 0,
+      "n_drawings": 62,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 739,
+      "n_chars": 1218,
+      "n_images": 0,
+      "n_drawings": 1736,
+      "n_curves": 2402,
+      "has_table_hint": false
+    },
+    {
+      "page": 740,
+      "n_chars": 1468,
+      "n_images": 0,
+      "n_drawings": 500,
+      "n_curves": 3635,
+      "has_table_hint": false
+    },
+    {
+      "page": 741,
+      "n_chars": 1035,
+      "n_images": 0,
+      "n_drawings": 1522,
+      "n_curves": 1696,
+      "has_table_hint": false
+    },
+    {
+      "page": 742,
+      "n_chars": 658,
+      "n_images": 0,
+      "n_drawings": 833,
+      "n_curves": 2296,
+      "has_table_hint": false
+    },
+    {
+      "page": 743,
+      "n_chars": 1812,
+      "n_images": 0,
+      "n_drawings": 252,
+      "n_curves": 2524,
+      "has_table_hint": false
+    },
+    {
+      "page": 744,
+      "n_chars": 1526,
+      "n_images": 0,
+      "n_drawings": 1304,
+      "n_curves": 2891,
+      "has_table_hint": false
+    },
+    {
+      "page": 745,
+      "n_chars": 2110,
+      "n_images": 0,
+      "n_drawings": 30,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 746,
+      "n_chars": 1399,
+      "n_images": 0,
+      "n_drawings": 231,
+      "n_curves": 1484,
+      "has_table_hint": false
+    },
+    {
+      "page": 747,
+      "n_chars": 1437,
+      "n_images": 0,
+      "n_drawings": 220,
+      "n_curves": 1268,
+      "has_table_hint": false
+    },
+    {
+      "page": 748,
+      "n_chars": 2615,
+      "n_images": 0,
+      "n_drawings": 254,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 749,
+      "n_chars": 541,
+      "n_images": 0,
+      "n_drawings": 31,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 750,
+      "n_chars": 1214,
+      "n_images": 0,
+      "n_drawings": 66,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 751,
+      "n_chars": 1678,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 752,
+      "n_chars": 1767,
+      "n_images": 0,
+      "n_drawings": 106,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 753,
+      "n_chars": 838,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 754,
+      "n_chars": 840,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 755,
+      "n_chars": 840,
+      "n_images": 0,
+      "n_drawings": 50,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 756,
+      "n_chars": 1270,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 757,
+      "n_chars": 1351,
+      "n_images": 0,
+      "n_drawings": 90,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 758,
+      "n_chars": 1696,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 759,
+      "n_chars": 1586,
+      "n_images": 0,
+      "n_drawings": 74,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 760,
+      "n_chars": 1764,
+      "n_images": 0,
+      "n_drawings": 114,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 761,
+      "n_chars": 1134,
+      "n_images": 0,
+      "n_drawings": 82,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 762,
+      "n_chars": 1331,
+      "n_images": 0,
+      "n_drawings": 34,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 763,
+      "n_chars": 1133,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 764,
+      "n_chars": 316,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 765,
+      "n_chars": 2443,
+      "n_images": 0,
+      "n_drawings": 43,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 766,
+      "n_chars": 1297,
+      "n_images": 0,
+      "n_drawings": 4,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 767,
+      "n_chars": 977,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 768,
+      "n_chars": 2245,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 769,
+      "n_chars": 1534,
+      "n_images": 0,
+      "n_drawings": 2,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 770,
+      "n_chars": 1624,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 771,
+      "n_chars": 1688,
+      "n_images": 0,
+      "n_drawings": 30,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 772,
+      "n_chars": 1601,
+      "n_images": 0,
+      "n_drawings": 42,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 773,
+      "n_chars": 1879,
+      "n_images": 0,
+      "n_drawings": 25,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 774,
+      "n_chars": 2039,
+      "n_images": 0,
+      "n_drawings": 26,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 775,
+      "n_chars": 1767,
+      "n_images": 0,
+      "n_drawings": 25,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 776,
+      "n_chars": 1835,
+      "n_images": 0,
+      "n_drawings": 25,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 777,
+      "n_chars": 1471,
+      "n_images": 0,
+      "n_drawings": 25,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 778,
+      "n_chars": 1698,
+      "n_images": 0,
+      "n_drawings": 19,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 779,
+      "n_chars": 1924,
+      "n_images": 0,
+      "n_drawings": 24,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 780,
+      "n_chars": 2084,
+      "n_images": 0,
+      "n_drawings": 92,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 781,
+      "n_chars": 2265,
+      "n_images": 0,
+      "n_drawings": 151,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 782,
+      "n_chars": 1055,
+      "n_images": 0,
+      "n_drawings": 111,
+      "n_curves": 0,
+      "has_table_hint": false
+    },
+    {
+      "page": 783,
+      "n_chars": 1082,
+      "n_images": 0,
+      "n_drawings": 15,
+      "n_curves": 98,
+      "has_table_hint": false
+    }
+  ],
+  "problem_pages": [
+    {
+      "page": 1,
+      "reason": "provável esquemático (curvas: 98, traços: 16) — informação visual não capturada no texto"
+    },
+    {
+      "page": 4,
+      "reason": "provável esquemático (curvas: 0, traços: 697) — informação visual não capturada no texto"
+    },
+    {
+      "page": 40,
+      "reason": "provável esquemático (curvas: 3567, traços: 224) — informação visual não capturada no texto"
+    },
+    {
+      "page": 41,
+      "reason": "provável esquemático (curvas: 2402, traços: 772) — informação visual não capturada no texto"
+    },
+    {
+      "page": 57,
+      "reason": "provável esquemático (curvas: 2389, traços: 196) — informação visual não capturada no texto"
+    },
+    {
+      "page": 58,
+      "reason": "provável esquemático (curvas: 956, traços: 98) — informação visual não capturada no texto"
+    },
+    {
+      "page": 59,
+      "reason": "provável esquemático (curvas: 1123, traços: 189) — informação visual não capturada no texto"
+    },
+    {
+      "page": 64,
+      "reason": "provável esquemático (curvas: 1004, traços: 91) — informação visual não capturada no texto"
+    },
+    {
+      "page": 65,
+      "reason": "provável esquemático (curvas: 9649, traços: 564) — informação visual não capturada no texto"
+    },
+    {
+      "page": 71,
+      "reason": "provável esquemático (curvas: 3064, traços: 308) — informação visual não capturada no texto"
+    },
+    {
+      "page": 72,
+      "reason": "provável esquemático (curvas: 0, traços: 312) — informação visual não capturada no texto"
+    },
+    {
+      "page": 73,
+      "reason": "provável esquemático (curvas: 0, traços: 309) — informação visual não capturada no texto"
+    },
+    {
+      "page": 82,
+      "reason": "provável esquemático (curvas: 0, traços: 346) — informação visual não capturada no texto"
+    },
+    {
+      "page": 96,
+      "reason": "provável esquemático (curvas: 0, traços: 307) — informação visual não capturada no texto"
+    },
+    {
+      "page": 101,
+      "reason": "provável esquemático (curvas: 0, traços: 309) — informação visual não capturada no texto"
+    },
+    {
+      "page": 115,
+      "reason": "provável esquemático (curvas: 4370, traços: 312) — informação visual não capturada no texto"
+    },
+    {
+      "page": 116,
+      "reason": "provável esquemático (curvas: 1433, traços: 137) — informação visual não capturada no texto"
+    },
+    {
+      "page": 119,
+      "reason": "provável esquemático (curvas: 28, traços: 38) — informação visual não capturada no texto"
+    },
+    {
+      "page": 122,
+      "reason": "provável esquemático (curvas: 4, traços: 80) — informação visual não capturada no texto"
+    },
+    {
+      "page": 123,
+      "reason": "provável esquemático (curvas: 4, traços: 113) — informação visual não capturada no texto"
+    },
+    {
+      "page": 133,
+      "reason": "provável esquemático (curvas: 0, traços: 469) — informação visual não capturada no texto"
+    },
+    {
+      "page": 165,
+      "reason": "provável esquemático (curvas: 744, traços: 86) — informação visual não capturada no texto"
+    },
+    {
+      "page": 174,
+      "reason": "provável esquemático (curvas: 5278, traços: 353) — informação visual não capturada no texto"
+    },
+    {
+      "page": 176,
+      "reason": "provável esquemático (curvas: 0, traços: 753) — informação visual não capturada no texto"
+    },
+    {
+      "page": 181,
+      "reason": "provável esquemático (curvas: 3036, traços: 463) — informação visual não capturada no texto"
+    },
+    {
+      "page": 182,
+      "reason": "provável esquemático (curvas: 584, traços: 82) — informação visual não capturada no texto"
+    },
+    {
+      "page": 183,
+      "reason": "provável esquemático (curvas: 396, traços: 62) — informação visual não capturada no texto"
+    },
+    {
+      "page": 184,
+      "reason": "provável esquemático (curvas: 1810, traços: 199) — informação visual não capturada no texto"
+    },
+    {
+      "page": 186,
+      "reason": "provável esquemático (curvas: 5330, traços: 615) — informação visual não capturada no texto"
+    },
+    {
+      "page": 187,
+      "reason": "provável esquemático (curvas: 1200, traços: 151) — informação visual não capturada no texto"
+    },
+    {
+      "page": 190,
+      "reason": "provável esquemático (curvas: 5271, traços: 283) — informação visual não capturada no texto"
+    },
+    {
+      "page": 193,
+      "reason": "provável esquemático (curvas: 5033, traços: 1245) — informação visual não capturada no texto"
+    },
+    {
+      "page": 240,
+      "reason": "provável esquemático (curvas: 0, traços: 316) — informação visual não capturada no texto"
+    },
+    {
+      "page": 241,
+      "reason": "provável esquemático (curvas: 0, traços: 316) — informação visual não capturada no texto"
+    },
+    {
+      "page": 283,
+      "reason": "provável esquemático (curvas: 0, traços: 611) — informação visual não capturada no texto"
+    },
+    {
+      "page": 304,
+      "reason": "provável esquemático (curvas: 4556, traços: 640) — informação visual não capturada no texto"
+    },
+    {
+      "page": 308,
+      "reason": "provável esquemático (curvas: 8, traços: 35) — informação visual não capturada no texto"
+    },
+    {
+      "page": 312,
+      "reason": "provável esquemático (curvas: 3896, traços: 451) — informação visual não capturada no texto"
+    },
+    {
+      "page": 314,
+      "reason": "provável esquemático (curvas: 2212, traços: 202) — informação visual não capturada no texto"
+    },
+    {
+      "page": 315,
+      "reason": "provável esquemático (curvas: 1134, traços: 151) — informação visual não capturada no texto"
+    },
+    {
+      "page": 316,
+      "reason": "provável esquemático (curvas: 2489, traços: 318) — informação visual não capturada no texto"
+    },
+    {
+      "page": 354,
+      "reason": "provável esquemático (curvas: 1207, traços: 253) — informação visual não capturada no texto"
+    },
+    {
+      "page": 356,
+      "reason": "provável esquemático (curvas: 1117, traços: 57) — informação visual não capturada no texto"
+    },
+    {
+      "page": 358,
+      "reason": "provável esquemático (curvas: 875, traços: 73) — informação visual não capturada no texto"
+    },
+    {
+      "page": 361,
+      "reason": "provável esquemático (curvas: 2008, traços: 301) — informação visual não capturada no texto"
+    },
+    {
+      "page": 362,
+      "reason": "provável esquemático (curvas: 2293, traços: 525) — informação visual não capturada no texto"
+    },
+    {
+      "page": 364,
+      "reason": "provável esquemático (curvas: 0, traços: 315) — informação visual não capturada no texto"
+    },
+    {
+      "page": 390,
+      "reason": "provável esquemático (curvas: 6834, traços: 608) — informação visual não capturada no texto"
+    },
+    {
+      "page": 391,
+      "reason": "provável esquemático (curvas: 1932, traços: 267) — informação visual não capturada no texto"
+    },
+    {
+      "page": 392,
+      "reason": "provável esquemático (curvas: 2600, traços: 178) — informação visual não capturada no texto"
+    },
+    {
+      "page": 393,
+      "reason": "provável esquemático (curvas: 3318, traços: 223) — informação visual não capturada no texto"
+    },
+    {
+      "page": 394,
+      "reason": "provável esquemático (curvas: 3935, traços: 255) — informação visual não capturada no texto"
+    },
+    {
+      "page": 395,
+      "reason": "provável esquemático (curvas: 3278, traços: 229) — informação visual não capturada no texto"
+    },
+    {
+      "page": 396,
+      "reason": "provável esquemático (curvas: 8069, traços: 562) — informação visual não capturada no texto"
+    },
+    {
+      "page": 397,
+      "reason": "provável esquemático (curvas: 3743, traços: 258) — informação visual não capturada no texto"
+    },
+    {
+      "page": 398,
+      "reason": "provável esquemático (curvas: 8175, traços: 554) — informação visual não capturada no texto"
+    },
+    {
+      "page": 399,
+      "reason": "provável esquemático (curvas: 9150, traços: 673) — informação visual não capturada no texto"
+    },
+    {
+      "page": 415,
+      "reason": "provável esquemático (curvas: 5427, traços: 1044) — informação visual não capturada no texto"
+    },
+    {
+      "page": 418,
+      "reason": "provável esquemático (curvas: 758, traços: 92) — informação visual não capturada no texto"
+    },
+    {
+      "page": 419,
+      "reason": "provável esquemático (curvas: 1666, traços: 561) — informação visual não capturada no texto"
+    },
+    {
+      "page": 420,
+      "reason": "provável esquemático (curvas: 594, traços: 263) — informação visual não capturada no texto"
+    },
+    {
+      "page": 421,
+      "reason": "provável esquemático (curvas: 2376, traços: 220) — informação visual não capturada no texto"
+    },
+    {
+      "page": 422,
+      "reason": "provável esquemático (curvas: 1201, traços: 136) — informação visual não capturada no texto"
+    },
+    {
+      "page": 423,
+      "reason": "provável esquemático (curvas: 3160, traços: 276) — informação visual não capturada no texto"
+    },
+    {
+      "page": 424,
+      "reason": "provável esquemático (curvas: 708, traços: 82) — informação visual não capturada no texto"
+    },
+    {
+      "page": 425,
+      "reason": "provável esquemático (curvas: 1446, traços: 143) — informação visual não capturada no texto"
+    },
+    {
+      "page": 426,
+      "reason": "provável esquemático (curvas: 1492, traços: 116) — informação visual não capturada no texto"
+    },
+    {
+      "page": 427,
+      "reason": "provável esquemático (curvas: 2767, traços: 356) — informação visual não capturada no texto"
+    },
+    {
+      "page": 428,
+      "reason": "provável esquemático (curvas: 1897, traços: 137) — informação visual não capturada no texto"
+    },
+    {
+      "page": 429,
+      "reason": "provável esquemático (curvas: 2097, traços: 641) — informação visual não capturada no texto"
+    },
+    {
+      "page": 451,
+      "reason": "provável esquemático (curvas: 7090, traços: 787) — informação visual não capturada no texto"
+    },
+    {
+      "page": 453,
+      "reason": "provável esquemático (curvas: 1414, traços: 414) — informação visual não capturada no texto"
+    },
+    {
+      "page": 461,
+      "reason": "provável esquemático (curvas: 683, traços: 411) — informação visual não capturada no texto"
+    },
+    {
+      "page": 463,
+      "reason": "provável esquemático (curvas: 862, traços: 2140) — informação visual não capturada no texto"
+    },
+    {
+      "page": 470,
+      "reason": "provável esquemático (curvas: 536, traços: 507) — informação visual não capturada no texto"
+    },
+    {
+      "page": 472,
+      "reason": "provável esquemático (curvas: 1299, traços: 1454) — informação visual não capturada no texto"
+    },
+    {
+      "page": 473,
+      "reason": "provável esquemático (curvas: 1193, traços: 1053) — informação visual não capturada no texto"
+    },
+    {
+      "page": 474,
+      "reason": "provável esquemático (curvas: 1176, traços: 561) — informação visual não capturada no texto"
+    },
+    {
+      "page": 528,
+      "reason": "provável esquemático (curvas: 6452, traços: 904) — informação visual não capturada no texto"
+    },
+    {
+      "page": 529,
+      "reason": "provável esquemático (curvas: 1057, traços: 180) — informação visual não capturada no texto"
+    },
+    {
+      "page": 530,
+      "reason": "provável esquemático (curvas: 1167, traços: 166) — informação visual não capturada no texto"
+    },
+    {
+      "page": 531,
+      "reason": "provável esquemático (curvas: 1218, traços: 138) — informação visual não capturada no texto"
+    },
+    {
+      "page": 535,
+      "reason": "provável esquemático (curvas: 3416, traços: 365) — informação visual não capturada no texto"
+    },
+    {
+      "page": 544,
+      "reason": "provável esquemático (curvas: 6353, traços: 964) — informação visual não capturada no texto"
+    },
+    {
+      "page": 546,
+      "reason": "provável esquemático (curvas: 5566, traços: 964) — informação visual não capturada no texto"
+    },
+    {
+      "page": 547,
+      "reason": "provável esquemático (curvas: 4463, traços: 361) — informação visual não capturada no texto"
+    },
+    {
+      "page": 549,
+      "reason": "provável esquemático (curvas: 1161, traços: 308) — informação visual não capturada no texto"
+    },
+    {
+      "page": 564,
+      "reason": "provável esquemático (curvas: 3332, traços: 239) — informação visual não capturada no texto"
+    },
+    {
+      "page": 565,
+      "reason": "provável esquemático (curvas: 4533, traços: 258) — informação visual não capturada no texto"
+    },
+    {
+      "page": 566,
+      "reason": "provável esquemático (curvas: 960, traços: 124) — informação visual não capturada no texto"
+    },
+    {
+      "page": 567,
+      "reason": "provável esquemático (curvas: 3744, traços: 290) — informação visual não capturada no texto"
+    },
+    {
+      "page": 568,
+      "reason": "provável esquemático (curvas: 2995, traços: 181) — informação visual não capturada no texto"
+    },
+    {
+      "page": 569,
+      "reason": "provável esquemático (curvas: 2078, traços: 419) — informação visual não capturada no texto"
+    },
+    {
+      "page": 570,
+      "reason": "provável esquemático (curvas: 1156, traços: 116) — informação visual não capturada no texto"
+    },
+    {
+      "page": 597,
+      "reason": "provável esquemático (curvas: 1605, traços: 118) — informação visual não capturada no texto"
+    },
+    {
+      "page": 598,
+      "reason": "provável esquemático (curvas: 2112, traços: 218) — informação visual não capturada no texto"
+    },
+    {
+      "page": 599,
+      "reason": "provável esquemático (curvas: 3019, traços: 287) — informação visual não capturada no texto"
+    },
+    {
+      "page": 600,
+      "reason": "provável esquemático (curvas: 4068, traços: 190) — informação visual não capturada no texto"
+    },
+    {
+      "page": 601,
+      "reason": "provável esquemático (curvas: 13598, traços: 596) — informação visual não capturada no texto"
+    },
+    {
+      "page": 603,
+      "reason": "provável esquemático (curvas: 1298, traços: 92) — informação visual não capturada no texto"
+    },
+    {
+      "page": 604,
+      "reason": "provável esquemático (curvas: 3043, traços: 289) — informação visual não capturada no texto"
+    },
+    {
+      "page": 608,
+      "reason": "provável esquemático (curvas: 2420, traços: 182) — informação visual não capturada no texto"
+    },
+    {
+      "page": 629,
+      "reason": "provável esquemático (curvas: 2716, traços: 300) — informação visual não capturada no texto"
+    },
+    {
+      "page": 630,
+      "reason": "provável esquemático (curvas: 4539, traços: 628) — informação visual não capturada no texto"
+    },
+    {
+      "page": 632,
+      "reason": "provável esquemático (curvas: 2720, traços: 345) — informação visual não capturada no texto"
+    },
+    {
+      "page": 644,
+      "reason": "provável esquemático (curvas: 0, traços: 402) — informação visual não capturada no texto"
+    },
+    {
+      "page": 645,
+      "reason": "provável esquemático (curvas: 0, traços: 402) — informação visual não capturada no texto"
+    },
+    {
+      "page": 648,
+      "reason": "provável esquemático (curvas: 2838, traços: 506) — informação visual não capturada no texto"
+    },
+    {
+      "page": 649,
+      "reason": "provável esquemático (curvas: 439, traços: 36) — informação visual não capturada no texto"
+    },
+    {
+      "page": 650,
+      "reason": "provável esquemático (curvas: 1974, traços: 145) — informação visual não capturada no texto"
+    },
+    {
+      "page": 651,
+      "reason": "provável esquemático (curvas: 2697, traços: 203) — informação visual não capturada no texto"
+    },
+    {
+      "page": 652,
+      "reason": "provável esquemático (curvas: 834, traços: 101) — informação visual não capturada no texto"
+    },
+    {
+      "page": 653,
+      "reason": "provável esquemático (curvas: 294, traços: 29) — informação visual não capturada no texto"
+    },
+    {
+      "page": 654,
+      "reason": "provável esquemático (curvas: 2608, traços: 202) — informação visual não capturada no texto"
+    },
+    {
+      "page": 655,
+      "reason": "provável esquemático (curvas: 2608, traços: 188) — informação visual não capturada no texto"
+    },
+    {
+      "page": 656,
+      "reason": "provável esquemático (curvas: 1084, traços: 182) — informação visual não capturada no texto"
+    },
+    {
+      "page": 657,
+      "reason": "provável esquemático (curvas: 1134, traços: 121) — informação visual não capturada no texto"
+    },
+    {
+      "page": 658,
+      "reason": "provável esquemático (curvas: 3435, traços: 214) — informação visual não capturada no texto"
+    },
+    {
+      "page": 662,
+      "reason": "provável esquemático (curvas: 3487, traços: 286) — informação visual não capturada no texto"
+    },
+    {
+      "page": 663,
+      "reason": "provável esquemático (curvas: 954, traços: 232) — informação visual não capturada no texto"
+    },
+    {
+      "page": 664,
+      "reason": "provável esquemático (curvas: 930, traços: 206) — informação visual não capturada no texto"
+    },
+    {
+      "page": 665,
+      "reason": "provável esquemático (curvas: 976, traços: 186) — informação visual não capturada no texto"
+    },
+    {
+      "page": 666,
+      "reason": "provável esquemático (curvas: 1258, traços: 199) — informação visual não capturada no texto"
+    },
+    {
+      "page": 667,
+      "reason": "provável esquemático (curvas: 1090, traços: 239) — informação visual não capturada no texto"
+    },
+    {
+      "page": 668,
+      "reason": "provável esquemático (curvas: 1862, traços: 269) — informação visual não capturada no texto"
+    },
+    {
+      "page": 669,
+      "reason": "provável esquemático (curvas: 2758, traços: 311) — informação visual não capturada no texto"
+    },
+    {
+      "page": 671,
+      "reason": "provável esquemático (curvas: 1332, traços: 144) — informação visual não capturada no texto"
+    },
+    {
+      "page": 672,
+      "reason": "provável esquemático (curvas: 1332, traços: 144) — informação visual não capturada no texto"
+    },
+    {
+      "page": 673,
+      "reason": "provável esquemático (curvas: 464, traços: 349) — informação visual não capturada no texto"
+    },
+    {
+      "page": 674,
+      "reason": "provável esquemático (curvas: 476, traços: 279) — informação visual não capturada no texto"
+    },
+    {
+      "page": 675,
+      "reason": "provável esquemático (curvas: 1375, traços: 141) — informação visual não capturada no texto"
+    },
+    {
+      "page": 728,
+      "reason": "provável esquemático (curvas: 8447, traços: 870) — informação visual não capturada no texto"
+    },
+    {
+      "page": 733,
+      "reason": "provável esquemático (curvas: 0, traços: 514) — informação visual não capturada no texto"
+    },
+    {
+      "page": 734,
+      "reason": "provável esquemático (curvas: 0, traços: 514) — informação visual não capturada no texto"
+    },
+    {
+      "page": 737,
+      "reason": "provável esquemático (curvas: 879, traços: 188) — informação visual não capturada no texto"
+    },
+    {
+      "page": 739,
+      "reason": "provável esquemático (curvas: 2402, traços: 1736) — informação visual não capturada no texto"
+    },
+    {
+      "page": 740,
+      "reason": "provável esquemático (curvas: 3635, traços: 500) — informação visual não capturada no texto"
+    },
+    {
+      "page": 741,
+      "reason": "provável esquemático (curvas: 1696, traços: 1522) — informação visual não capturada no texto"
+    },
+    {
+      "page": 742,
+      "reason": "provável esquemático (curvas: 2296, traços: 833) — informação visual não capturada no texto"
+    },
+    {
+      "page": 743,
+      "reason": "provável esquemático (curvas: 2524, traços: 252) — informação visual não capturada no texto"
+    },
+    {
+      "page": 744,
+      "reason": "provável esquemático (curvas: 2891, traços: 1304) — informação visual não capturada no texto"
+    },
+    {
+      "page": 746,
+      "reason": "provável esquemático (curvas: 1484, traços: 231) — informação visual não capturada no texto"
+    },
+    {
+      "page": 747,
+      "reason": "provável esquemático (curvas: 1268, traços: 220) — informação visual não capturada no texto"
+    },
+    {
+      "page": 783,
+      "reason": "provável esquemático (curvas: 98, traços: 15) — informação visual não capturada no texto"
+    }
+  ]
+}

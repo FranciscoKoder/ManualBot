@@ -38,15 +38,46 @@ ManualBot/
 
 ## Como executar
 
-1. Instale as dependências básicas:
+### Configuração inicial (ambiente virtual)
 
-```powershell
-python -m pip install streamlit pymupdf
+Em versões recentes do Linux (Ubuntu 23.04+, Debian 12+), o `pip` bloqueia instalações globais de pacotes para evitar conflitos com o sistema. A solução é usar um **Ambiente Virtual (Virtual Environment)**.
+
+**1. Instale o `venv` (se necessário):**
+
+```bash
+sudo apt update
+sudo apt install python3-venv
+```
+
+**2. Crie o ambiente virtual:**
+
+Na raiz do projeto (`~/Documentos/Github Repositorios/ManualBot`), execute:
+
+```bash
+python3 -m venv .venv
+```
+
+**3. Ative o ambiente virtual:**
+
+```bash
+source .venv/bin/activate
+```
+
+Você verá `(.venv)` no início da linha do terminal, indicando que o ambiente está ativo.
+
+> **Dica importante:** Sempre que fechar o terminal e retornar ao projeto, lembre-se de rodar `source .venv/bin/activate` antes de trabalhar no código.
+
+### Instalação e execução
+
+1. Com o ambiente virtual ativado, instale as dependências:
+
+```bash
+pip install streamlit pymupdf
 ```
 
 2. Inicie a interface Streamlit:
 
-```powershell
+```bash
 cd src/app
 streamlit run app.py
 ```

@@ -1,0 +1,161 @@
+import json
+from pathlib import Path
+
+notebook = {
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# ManualBot — Semana 2: Chunking, Embeddings, Banco Vetorial e Busca Semântica\n",
+    "\n",
+    "Este notebook contém os experimentos e a validação completa da **Semana 2** do projeto **ManualBot (ESP32)**.\n",
+    "\n",
+    "## Objetivos da Semana 2:\n",
+    "1. **Implementar Chunking**: Divisão em blocos de 800 caracteres com overlap de 100 caracteres usando `RecursiveCharacterTextSplitter`.\n",
+    "2. **Gerar Embeddings**: Utilização do modelo open-source `sentence-transformers/all-MiniLM-L6-v2`.\n",
+    "3. **Construir o Banco Vetorial**: Banco de dados vetorial persistente com **ChromaDB**.\n",
+    "4. **Validar a Busca Semântica**: Consulta e recuperação de trechos relevantes dos manuais do ESP32."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "--- \n",
+    "## 1. Importação das Bibliotecas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": None,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import os\n",
+    "import sys\n",
+    "from pathlib import Path\n",
+    "\n",
+    "from langchain_community.document_loaders import PyPDFDirectoryLoader\n",
+    "from langchain_text_splitters import RecursiveCharacterTextSplitter\n",
+    "from langchain_huggingface import HuggingFaceEmbeddings\n",
+    "from langchain_chroma import Chroma\n",
+    "\n",
+    "print(\"Bibliotecas importadas com sucesso!\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "--- \n",
+    "## 2. Carregamento dos PDFs e Configuração de Chunking"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": None,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "PASTA_DOCUMENTOS = Path(\"../docs/PDFs-Instrucoes\")\n",
+    "PASTA_CHROMA = Path(\"../data/chroma_db\")\n",
+    "MODELO_EMBEDDING = \"sentence-transformers/all-MiniLM-L6-v2\"\n",
+    "\n",
+    "print(f\"Carregando PDFs de: {PASTA_DOCUMENTOS.resolve()}\")\n",
+    "loader = PyPDFDirectoryLoader(str(PASTA_DOCUMENTOS))\n",
+    "documentos = loader.load()\n",
+    "print(f\"Total de páginas carregadas: {len(documentos)}\")\n",
+    "\n",
+    "# Estratégia de Chunking (800 chars / 100 overlap)\n",
+    "text_splitter = RecursiveCharacterTextSplitter(\n",
+    "    chunk_size=800,\n",
+    "    chunk_overlap=100,\n",
+    "    separators=[\"\\n\\n\", \"\\n\", \" \", \"\"]\n",
+    ")\n",
+    "chunks = text_splitter.split_documents(documentos)\n",
+    "print(f\"Total de chunks gerados: {len(chunks)}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "--- \n",
+    "## 3. Geração de Embeddings e Construção do Banco Vetorial ChromaDB"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": None,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(f\"Inicializando modelo de embeddings: {MODELO_EMBEDDING}\")\n",
+    "embeddings = HuggingFaceEmbeddings(\n",
+    "    model_name=MODELO_EMBEDDING,\n",
+    "    model_kwargs={'device': 'cpu'},\n",
+    "    encode_kwargs={'normalize_embeddings': True}\n",
+    ")\n",
+    "\n",
+    "PASTA_CHROMA.mkdir(parents=True, exist_ok=True)\n",
+    "\n",
+    "print(\"Gerando vetores e salvando no ChromaDB...\")\n",
+    "vector_store = Chroma.from_documents(\n",
+    "    documents=chunks,\n",
+    "    embedding=embeddings,\n",
+    "    persist_directory=str(PASTA_CHROMA)\n",
+    ")\n",
+    "print(\"Banco vetorial criado e salvo com sucesso em data/chroma_db!\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "--- \n",
+    "## 4. Validação da Busca Semântica"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": None,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "perguntas_teste = [\n",
+    "    \"What is the operating voltage range for the ESP32?\",\n",
+    "    \"How many GPIO pins does the ESP32 have?\",\n",
+    "    \"What are the Wi-Fi protocols supported by the ESP32?\",\n",
+    "    \"How does deep sleep mode work on ESP32?\"\n",
+    "]\n",
+    "\n",
+    "for i, pergunta in enumerate(perguntas_teste, 1):\n",
+    "    print(f\"\\n[Pergunta {i}]: {pergunta}\")\n",
+    "    print(\"=\" * 60)\n",
+    "    resultados = vector_store.similarity_search_with_score(pergunta, k=3)\n",
+    "    for j, (doc, score) in enumerate(resultados, 1):\n",
+    "        fonte = Path(doc.metadata.get('source', 'Desconhecido')).name\n",
+    "        pagina = doc.metadata.get('page', 0) + 1\n",
+    "        print(f\"  Resultado {j} (Score Distância: {score:.4f}):\")\n",
+    "        print(f\"  Fonte: {fonte} | Página: {pagina}\")\n",
+    "        preview = doc.page_content.replace('\\n', ' ').strip()[:180]\n",
+    "        print(f\"  Trecho: \\\"{preview}...\\\"\")\n",
+    "        print(\"  \" + \"-\" * 45)"
+   ]
+  }
+ ],
+ "metadata": {
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
+
+caminho = Path("notebooks/semana_2_ingestao_e_busca.ipynb")
+with open(caminho, "w", encoding="utf-8") as f:
+    json.dump(notebook, f, indent=2, ensure_ascii=False)
+
+print("Notebook gerado em notebooks/semana_2_ingestao_e_busca.ipynb")

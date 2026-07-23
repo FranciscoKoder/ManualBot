@@ -1,0 +1,10 @@
+# Python / Cache
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+env/
+venv/
+
+# Base de Dados Vetorial gerada dinamicamente (ChromaDB > 100MB)
+data/chroma_db/

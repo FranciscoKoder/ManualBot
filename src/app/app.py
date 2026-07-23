@@ -1,259 +1,381 @@
-
-import random
-import time
+import site
 import sys
+import time
 from pathlib import Path
-
-import fitz  # PyMuPDF
 import streamlit as st
 
-# Adicionar o diretório src ao path para permitir imports
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+user_site = site.getusersitepackages()
+if user_site not in sys.path:
+    sys.path.insert(0, user_site)
 
-# Importar funções do módulo de ingestão
+SRC_PATH = Path(__file__).resolve().parents[1]
+if str(SRC_PATH) not in sys.path:
+    sys.path.insert(0, str(SRC_PATH))
+
 from ingestion.pdf_extract import (
     extrair_frase_de,
     extrair_frase_aleatoria,
     extract_pdf,
     listar_pdfs,
 )
-
-
+from pipeline.rag_pipeline import RAGPipeline
 
 st.set_page_config(page_title="ManualBot - ESP32", page_icon="🔧", layout="wide")
 
-
-# Dados mock (para a tela de consulta)
-
-MOCK_DOCS = [
-    "ESP32 Technical Reference Manual",
-    "ESP32 Series Datasheet",
-    "ESP32-WROOM-32 Datasheet",
-    "ESP32 Hardware Design Guidelines",
-    "ESP32 SoC Errata",
-    "ESP-IDF Programming Guide",
-    "Arduino-ESP32 Core",
-]
-
-MOCK_ANSWER = (
-    "[PLACEHOLDER] Esta é uma resposta simulada. Quando o pipeline RAG "
-    "estiver implementado, aqui aparecerá a resposta gerada pelo LLM com "
-    "base nos trechos recuperados dos documentos selecionados."
+# Forçar tema claro com fundo branco limpo e alto contraste
+st.markdown(
+    """
+    <style>
+    /* Fundo da aplicação */
+    .stApp {
+        background-color: #FFFFFF !important;
+        color: #0F172A !important;
+    }
+    /* Sidebar */
+    [data-testid="stSidebar"] {
+        background-color: #F8FAFC !important;
+        border-right: 1px solid #E2E8F0 !important;
+    }
+    /* Estilo de cards, expanders e caixas de texto */
+    .stMarkdown, p, span, label {
+        color: #0F172A !important;
+    }
+    div[data-testid="stMetricValue"] {
+        color: #0066CC !important;
+    }
+    /* Caixas de código e resultados */
+    div.stCodeBlock, div[data-testid="stExpander"] {
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 8px !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
 )
 
-MOCK_SOURCE = {
-    "documento": "ESP32 Technical Reference Manual",
-    "pagina": 42,
-    "trecho": (
-        "[PLACEHOLDER] Trecho do manual que teria sido usado como contexto "
-        "para gerar a resposta acima aparecerá aqui, junto com o número da "
-        "página de origem."
-    ),
-}
+@st.cache_resource
+def get_pipeline():
+    projeto_raiz = Path(__file__).resolve().parents[2]
+    pipeline = RAGPipeline(projeto_raiz)
+    pipeline.carregar_banco_existente()
+    return pipeline
 
-
-
-# Funções auxiliares
+pipeline = get_pipeline()
 
 def carregar_pdfs_reais() -> list[Path]:
-    """Carrega lista real de PDFs da pasta docs/PDFs-Instrucoes."""
     projeto_raiz = Path(__file__).resolve().parents[2]
     pasta_pdfs = projeto_raiz / "docs" / "PDFs-Instrucoes"
     return listar_pdfs(pasta_pdfs)
 
+def obter_tamanho_banco(pasta_chroma: Path) -> float:
+    """Calcula o tamanho total em Megabytes da pasta do ChromaDB."""
+    if not pasta_chroma.exists():
+        return 0.0
+    total_bytes = sum(f.stat().st_size for f in pasta_chroma.glob("**/*") if f.is_file())
+    return total_bytes / (1024 * 1024)
 
 # Estado da sessão
-
 if "historico" not in st.session_state:
     st.session_state.historico = []
 
 if "docs_selecionados" not in st.session_state:
     st.session_state.docs_selecionados = []
 
-
 # Sidebar - Navegação
-
 st.sidebar.title("🔧 ManualBot")
-st.sidebar.caption("Assistente de documentação técnica — ESP32")
-pagina = st.sidebar.radio("Navegação", ["Início", "Documentos", "Consultar Manual"])
+st.sidebar.caption("Assistente RAG para documentação do ESP32 — Semana 2")
 
+banco_status = "✅ Ativo (ChromaDB)" if pipeline.vector_store is not None else "⚠️ Não construído"
+st.sidebar.markdown(f"**Status do Banco Vetorial:** {banco_status}")
 
-# Tela: Início
+pagina = st.sidebar.radio(
+    "Navegação",
+    [
+        "Início",
+        "Documentos & Ingestão",
+        "🗄️ Inspeção do Banco Vetorial",
+        "Consultar Manual (Busca Semântica)"
+    ]
+)
 
+# ----------------------------------------------------
+# Tela 1: Início
+# ----------------------------------------------------
 if pagina == "Início":
-    st.title("Bem-vindo ao ManualBot")
-    st.write(
-        "Este protótipo demonstra a organização das telas do ManualBot, "
-        "um sistema RAG para responder perguntas sobre a documentação técnica do ESP32."
+    st.title("Bem-vindo ao ManualBot — ESP32")
+    st.markdown(
+        """
+        O **ManualBot** é um sistema RAG (Retrieval-Augmented Generation) projetado para 
+        responder perguntas técnicas sobre o **ESP32** com base na sua documentação oficial.
+        """
     )
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Domínio", "ESP32")
-    col2.metric("Documentos na base", len(MOCK_DOCS))
-    col3.metric("Status do pipeline", "Em construção")
-
-    st.info(
-        "Use o menu à esquerda: em **Documentos** você seleciona os manuais e pode provar "
-        "que a leitura funciona de verdade, e em **Consultar Manual** você faz sua pergunta."
-    )
-
-
-# Tela: Documentos (seleção / upload / prova de leitura)
-
-elif pagina == "Documentos":
-    st.title("Documentos da Base")
-    st.write("Selecione quais documentos o ManualBot deve considerar ao responder.")
-
-    docs_selecionados = st.multiselect(
-        "Documentos disponíveis",
-        MOCK_DOCS,
-        default=st.session_state.docs_selecionados or MOCK_DOCS[:2],
-    )
-    st.session_state.docs_selecionados = docs_selecionados
-
-    st.divider()
-
-    st.subheader("Upload de novo documento")
-    st.caption("Placeholder — ainda não conectado ao pipeline de ingestão.")
-    st.file_uploader("Adicionar PDF", type=["pdf"], accept_multiple_files=True)
-
-    if docs_selecionados:
-        st.success(f"{len(docs_selecionados)} documento(s) selecionado(s) para consulta.")
-    else:
-        st.warning("Nenhum documento selecionado ainda.")
-
-    st.divider()
-    st.subheader("Prova de leitura (dado real, ao vivo)")
-    st.caption(
-        "Funções do backend `pdf_extract.py` sendo chamadas pela interface Streamlit — "
-        "sem mock, extração real de PDFs."
-    )
-
-    # Carregar PDFs reais
+    
+    st.markdown("### 📊 Status da Entrega - Semana 2")
+    col1, col2, col3, col4 = st.columns(4)
+    
     pdfs_reais = carregar_pdfs_reais()
+    col1.metric("PDFs na Base", len(pdfs_reais))
+    col2.metric("Chunk Size / Overlap", "800 / 100")
+    col3.metric("Modelo de Embeddings", "all-MiniLM-L6-v2")
+    
+    tamanho_mb = obter_tamanho_banco(pipeline.pasta_chroma)
+    col4.metric("Tamanho ChromaDB", f"{tamanho_mb:.1f} MB")
 
-    if not pdfs_reais:
-        st.error("⚠️ Nenhum PDF encontrado em docs/PDFs-Instrucoes/.")
-    else:
-        st.write(f"**{len(pdfs_reais)} PDF(s) encontrado(s)** na pasta de documentos.")
+    st.divider()
 
-        # Abas para os diferentes modos de leitura
-        tab1, tab2, tab3 = st.tabs(
-            ["📖 Ler PDF Específico", "🎲 Sorteio Aleatório", "📋 Relatório Completo"]
+    st.markdown("### 🚀 Funcionalidades da Semana 2")
+    col_a, col_b = st.columns(2)
+    
+    with col_a:
+        st.info(
+            "**1. Ingestão & Chunking:**\n"
+            "Processamento automático dos PDFs usando `RecursiveCharacterTextSplitter` "
+            "com tamanho de 800 caracteres e sobreposição de 100 caracteres."
+        )
+        st.info(
+            "**2. Embeddings & Banco Vetorial:**\n"
+            "Vetorização com HuggingFace (`sentence-transformers/all-MiniLM-L6-v2`) "
+            "e persistência no ChromaDB local (`data/chroma_db`)."
+        )
+        
+    with col_b:
+        st.success(
+            "**3. Inspeção Visual do Banco Vetorial:**\n"
+            "Na aba **🗄️ Inspeção do Banco Vetorial**, visualize a quantidade exata de chunks "
+            "indexados, amostras de texto e os vetores numéricos de 384 dimensões em tempo real!"
+        )
+        st.warning(
+            "**4. Busca Semântica em Tempo Real:**\n"
+            "Na aba **Consultar Manual**, realize consultas semânticas sobre a documentação "
+            "com ranking por similaridade/distância!"
         )
 
-        # TAB 1: Ler PDF Específico
-        with tab1:
-            st.markdown("**Escolha um PDF e extraia uma frase real dele:**")
-            pdf_escolhido = st.selectbox(
-                "Selecione o documento",
-                pdfs_reais,
-                format_func=lambda p: p.name,
-                key="pdf_selector",
-            )
+# ----------------------------------------------------
+# Tela 2: Documentos & Ingestão
+# ----------------------------------------------------
+elif pagina == "Documentos & Ingestão":
+    st.title("📂 Gerenciamento de Documentos & Ingestão (Semana 2)")
+    st.write("Gerencie a base de PDFs, execute o pipeline de Chunking + Embeddings e inspecione os arquivos.")
 
-            col1, col2 = st.columns(2)
-            with col1:
-                btn_ler = st.button(
-                    "📖 Ler PDF", key="btn_ler_pdf", use_container_width=True
-                )
+    pdfs_reais = carregar_pdfs_reais()
 
-            if btn_ler:
-                with st.spinner("Extraindo frase do PDF..."):
-                    resultado = extrair_frase_de(pdf_escolhido)
-
-                if resultado:
-                    st.success(
-                        f"Lido de: **{resultado['documento']}** "
-                        f"(página {resultado['pagina']} de {resultado['total_paginas']})"
-                    )
-                    st.markdown(f'> "{resultado["frase"]}."')
-                else:
-                    st.error("Erro ao ler o PDF.")
-
-        # TAB 2: Sorteio Aleatório
-        with tab2:
-            st.markdown("**Sorteia um PDF aleatório e extrai uma frase dele:**")
-
-            if st.button("🎲 Sortear PDF e Frase", use_container_width=True):
-                with st.spinner("Sorteando e extraindo..."):
-                    resultado = extrair_frase_aleatoria()
-
-                if resultado is None:
-                    st.error("Nenhum PDF encontrado em docs/PDFs-Instrucoes/.")
-                else:
-                    st.success(
-                        f"Sorteado: **{resultado['documento']}** "
-                        f"(página {resultado['pagina']} de {resultado['total_paginas']})"
-                    )
-                    st.markdown(f'> "{resultado["frase"]}."')
-
-        # TAB 3: Relatório Completo
-        with tab3:
-            st.markdown(
-                "**Gere um relatório completo de um PDF** "
-                "(páginas, problemas detectados, conteúdo visual, etc):"
-            )
-
-            pdf_relatorio = st.selectbox(
-                "Selecione o documento para análise",
-                pdfs_reais,
-                format_func=lambda p: p.name,
-                key="pdf_selector_relatorio",
-            )
-
-            if st.button("📋 Gerar Relatório", use_container_width=True):
-                with st.spinner("Analisando PDF..."):
-                    relatorio = extract_pdf(pdf_relatorio)
-
-                st.subheader(f"Relatório: {relatorio['file']}")
-                st.metric("Total de páginas", relatorio["n_pages"])
-                st.metric("Páginas com problema", len(relatorio["problem_pages"]))
-
-                if relatorio["problem_pages"]:
-                    st.warning("**Páginas com possível problema:**")
-                    for pp in relatorio["problem_pages"]:
-                        st.write(f"- Página {pp['page']}: {pp['reason']}")
-
-                with st.expander("📊 Visualizar JSON completo"):
-                    st.json(relatorio)
-
-# Tela: Consultar Manual
-
-else:
-    st.title("Consultar Manual do ESP32")
-
-    if st.session_state.docs_selecionados:
-        st.caption("Consultando em: " + ", ".join(st.session_state.docs_selecionados))
+    st.subheader("1. Documentos na base de conhecimento")
+    if pdfs_reais:
+        st.success(f"{len(pdfs_reais)} documento(s) PDF encontrado(s) em `docs/PDFs-Instrucoes`:")
+        for pdf in pdfs_reais:
+            st.text(f"  • {pdf.name}")
     else:
-        st.warning("Nenhum documento selecionado. Vá até a tela **Documentos** primeiro.")
+        st.error("Nenhum PDF encontrado em `docs/PDFs-Instrucoes`.")
 
-    pergunta = st.text_input(
-        "Pergunta", placeholder="Ex: Como configurar o modo deep sleep no ESP32?"
+    st.divider()
+
+    # Seção de Ingestão (Semana 2 - Parâmetros Estáticos Fixo)
+    st.subheader("⚡ Processar Ingestão (Chunking Estático + Embeddings + ChromaDB)")
+    st.markdown(
+        "O pipeline da Semana 2 utiliza **Chunking Estático Fixo** padronizado especificamente para a "
+        "documentação do ESP32 e o modelo `all-MiniLM-L6-v2`."
+    )
+    
+    col_cfg1, col_cfg2, col_cfg3 = st.columns(3)
+    col_cfg1.metric("Tamanho do Chunk (Estático)", "800 caracteres")
+    col_cfg2.metric("Overlap (Estático)", "100 caracteres")
+    col_cfg3.metric("Estratégia", "RecursiveCharacterSplitter")
+
+    chunk_size = 800
+    chunk_overlap = 100
+
+    if st.button("🚀 Executar Ingestão & Construir Banco Vetorial", type="primary", use_container_width=True):
+        with st.spinner("Processando PDFs, gerando embeddings e salvando no ChromaDB... Isso pode levar alguns segundos."):
+            inicio = time.time()
+            res = pipeline.executar_ingestao(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
+            tempo_total = time.time() - inicio
+
+        st.balloons()
+        st.success(f"✅ Ingestão concluída com sucesso em {tempo_total:.2f} segundos!")
+        
+        col_res1, col_res2, col_res3 = st.columns(3)
+        col_res1.metric("Páginas Processadas", res["total_documentos"])
+        col_res2.metric("Total de Chunks Gerados", res["total_chunks"])
+        col_res3.metric("Local do Banco", "data/chroma_db")
+
+    st.divider()
+
+    st.subheader("🔍 Prova de leitura individual e inspeção de PDFs")
+    tab1, tab2, tab3 = st.tabs(["📖 Ler PDF Específico", "🎲 Sorteio Aleatório", "📋 Relatório de Ingestão"])
+
+    with tab1:
+        if pdfs_reais:
+            pdf_escolhido = st.selectbox("Selecione o documento", pdfs_reais, format_func=lambda p: p.name, key="pdf_sel")
+            if st.button("📖 Ler Frase Real do PDF", key="btn_ler_pdf"):
+                with st.spinner("Lendo documento..."):
+                    resultado = extrair_frase_de(pdf_escolhido)
+                if resultado:
+                    st.success(f"Lido de: **{resultado['documento']}** (página {resultado['pagina']} de {resultado['total_paginas']})")
+                    st.markdown(f'> "{resultado["frase"]}."')
+        else:
+            st.warning("Nenhum PDF disponível.")
+
+    with tab2:
+        if st.button("🎲 Sortear Frase Aleatória", use_container_width=True):
+            with st.spinner("Sorteando..."):
+                resultado = extrair_frase_aleatoria()
+            if resultado:
+                st.success(f"Sorteado: **{resultado['documento']}** (página {resultado['pagina']} de {resultado['total_paginas']})")
+                st.markdown(f'> "{resultado["frase"]}."')
+
+    with tab3:
+        if pdfs_reais:
+            pdf_relatorio = st.selectbox("Selecione para análise", pdfs_reais, format_func=lambda p: p.name, key="pdf_rel")
+            if st.button("📋 Gerar Relatório de Análise", use_container_width=True):
+                rel = extract_pdf(pdf_relatorio)
+                st.metric("Total de Páginas", rel["n_pages"])
+                st.metric("Páginas com atenção/visuais", len(rel["problem_pages"]))
+                with st.expander("Inspeção técnica (JSON)"):
+                    st.json(rel)
+
+# ----------------------------------------------------
+# Tela 3: Inspeção Visual do Banco Vetorial (Novo!)
+# ----------------------------------------------------
+elif pagina == "🗄️ Inspeção do Banco Vetorial":
+    st.title("🗄️ Inspeção Visual do Banco Vetorial (ChromaDB)")
+    st.markdown(
+        "Esta tela permite que você e seus professores inspecionem visualmente o **banco vetorial físico** "
+        "construído para o **ManualBot**, comprovando o chunking, metadados e os vetores de embeddings."
     )
 
-    consultar = st.button("Consultar", type="primary")
+    if pipeline.vector_store is None:
+        st.warning("⚠️ O banco vetorial ainda não foi carregado. Clique no botão abaixo para carregar.")
+        if st.button("🔨 Carregar Banco Vetorial"):
+            with st.spinner("Carregando ChromaDB..."):
+                pipeline.carregar_banco_existente()
+            st.rerun()
+    else:
+        try:
+            total_chunks = pipeline.vector_store._collection.count()
+            tamanho_mb = obter_tamanho_banco(pipeline.pasta_chroma)
+
+            st.markdown("### 📊 Visão Geral do Armazenamento")
+            col_m1, col_m2, col_m3, col_m4 = st.columns(4)
+            col_m1.metric("Total de Chunks Indexados", f"{total_chunks:,}")
+            col_m2.metric("Dimensões por Vetor", "384")
+            col_m3.metric("Tamanho do Banco no Disco", f"{tamanho_mb:.1f} MB")
+            col_m4.metric("Engine Vetorial", "ChromaDB + SQLite")
+
+            st.info(f"📍 **Caminho Físico do Banco:** `{pipeline.pasta_chroma / 'chroma.sqlite3'}`")
+
+            st.divider()
+
+            st.markdown("### 🔍 Explorador Raio-X de Chunks & Vetores")
+            st.markdown("Escolha quantos chunks deseja inspecionar para visualizar o texto original, metadados e seus **embeddings numéricos**:")
+
+            limite_inspecao = st.slider("Quantidade de chunks a carregar:", min_value=1, max_value=10, value=3)
+
+            dada_sample = pipeline.vector_store._collection.get(
+                limit=limite_inspecao,
+                include=["embeddings", "documents", "metadatas"]
+            )
+
+            if dada_sample and dada_sample.get("documents"):
+                for idx in range(len(dada_sample["documents"])):
+                    chunk_text = dada_sample["documents"][idx]
+                    metadata = dada_sample["metadatas"][idx] if dada_sample.get("metadatas") else {}
+                    embedding_vector = dada_sample["embeddings"][idx] if dada_sample.get("embeddings") is not None else []
+                    chunk_id = dada_sample["ids"][idx]
+
+                    fonte_path = metadata.get("source", "Desconhecido")
+                    fonte_nome = Path(fonte_path).name
+                    pagina_num = metadata.get("page", 0) + 1
+
+                    with st.expander(f"📦 Chunk #{idx+1} — Fonte: {fonte_nome} (Página {pagina_num})", expanded=(idx==0)):
+                        st.markdown(f"**ID no ChromaDB:** `{chunk_id}`")
+                        st.markdown(f"**Documento de Origem:** `{fonte_nome}`")
+                        st.markdown(f"**Página:** `{pagina_num}` | **Tamanho em Caracteres:** `{len(chunk_text)} chars`")
+                        
+                        st.markdown("**📄 Conteúdo do Texto do Chunk:**")
+                        st.code(chunk_text, language="text")
+
+                        if len(embedding_vector) > 0:
+                            st.markdown(f"**🔢 Vetor de Embedding (384 dimensões):**")
+                            # Formatar vetor para exibição amigável
+                            amostra_vetor = [round(float(v), 5) for v in embedding_vector[:10]]
+                            st.caption(
+                                f"Amostra dos 10 primeiros elementos do vetor: `{amostra_vetor}` ... "
+                                f"(Total de {len(embedding_vector)} valores numéricos float32)."
+                            )
+                            with st.popover("📐 Visualizar vetor completo de 384 números"):
+                                st.write(list(embedding_vector))
+            else:
+                st.warning("Nenhum chunk retornado.")
+
+        except Exception as e:
+            st.error(f"Erro ao acessar dados do ChromaDB: {str(e)}")
+
+# ----------------------------------------------------
+# Tela 4: Consultar Manual (Busca Semântica Real)
+# ----------------------------------------------------
+else:
+    st.title("🔎 Consultar Manual — Busca Semântica Real (Semana 2)")
+    st.markdown(
+        "Faça uma pergunta sobre o ESP32. O sistema utilizará os **embeddings** "
+        "e o **ChromaDB** para recuperar os trechos mais relevantes da documentação."
+    )
+
+    if pipeline.vector_store is None:
+        st.warning(
+            "⚠️ O banco vetorial ainda não foi inicializado nesta sessão. "
+            "Você pode clicar no botão abaixo para carregar/gerar o banco vetorial."
+        )
+        if st.button("🔨 Carregar/Construir Banco Vetorial Agora"):
+            with st.spinner("Inicializando modelo de embeddings e ChromaDB..."):
+                if not pipeline.carregar_banco_existente():
+                    pipeline.executar_ingestao()
+            st.rerun()
+
+    pergunta_sugerida = st.selectbox(
+        "💡 Sugestões de perguntas de teste (Semana 1 / 2):",
+        [
+            "Selecione ou digite uma pergunta abaixo...",
+            "What is the operating voltage range for the ESP32?",
+            "How many GPIO pins does the ESP32 have?",
+            "What are the Wi-Fi protocols supported by the ESP32?",
+            "How does deep sleep mode work on ESP32?",
+            "What is the maximum CPU frequency of the ESP32?"
+        ]
+    )
+
+    valor_inicial = pergunta_sugerida if pergunta_sugerida != "Selecione ou digite uma pergunta abaixo..." else ""
+    
+    pergunta = st.text_input("Sua pergunta:", value=valor_inicial, placeholder="Ex: What is the operating voltage of ESP32?")
+    top_k = st.slider("Quantidade de trechos a recuperar (Top K):", min_value=1, max_value=6, value=3)
+
+    consultar = st.button("🔍 Executar Busca Semântica", type="primary", use_container_width=True)
 
     if consultar:
         if not pergunta.strip():
-            st.warning("Digite uma pergunta antes de consultar.")
-        elif not st.session_state.docs_selecionados:
-            st.warning("Selecione ao menos um documento na tela Documentos.")
+            st.warning("Por favor, digite uma pergunta válida.")
         else:
-            with st.spinner("Consultando documentação..."):
-                time.sleep(1)
-            st.session_state.historico.append(pergunta)
+            with st.spinner("Buscando vetores mais similares no ChromaDB..."):
+                try:
+                    resultados = pipeline.consultar(pergunta, top_k=top_k)
+                    st.session_state.historico.append(pergunta)
 
-            st.subheader("Resposta")
-            st.success(MOCK_ANSWER)
+                    st.subheader(f"🎯 Trechos mais relevantes encontrados (Top {len(resultados)})")
 
-            st.subheader("Fonte utilizada")
-            with st.container(border=True):
-                st.markdown(f"**Documento:** {MOCK_SOURCE['documento']}")
-                st.markdown(f"**Página:** {MOCK_SOURCE['pagina']}")
-                st.markdown("**Trecho:**")
-                st.markdown(f"> {MOCK_SOURCE['trecho']}")
+                    for i, res in enumerate(resultados, 1):
+                        with st.container(border=True):
+                            col_head1, col_head2 = st.columns([3, 1])
+                            with col_head1:
+                                st.markdown(f"**{i}. Documento:** `{res['documento']}` — **Página:** {res['pagina']}")
+                            with col_head2:
+                                st.caption(f"Distância Coseno: `{res['score_distancia']:.4f}`")
+
+                            st.markdown("**Trecho recuperado:**")
+                            st.info(res["conteudo"])
+
+                except Exception as e:
+                    st.error(f"Erro durante a busca semântica: {str(e)}")
 
     if st.session_state.historico:
-        with st.expander("Histórico de perguntas desta sessão"):
+        with st.expander("📜 Histórico de perguntas da sessão"):
             for h in reversed(st.session_state.historico):
-                st.write(f"- {h}")
+                st.write(f"• {h}")

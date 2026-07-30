@@ -22,11 +22,10 @@ from pipeline.rag_pipeline import RAGPipeline
 
 st.set_page_config(page_title="ManualBot - ESP32", layout="wide")
 
-# ------------------------------------------------------------------
 # Identidade visual: paleta ManualBot + tipografia
 # Título/headers: Barlow Condensed (peso 900 / Black)
 # Corpo de texto: Plus Jakarta Sans (regular)
-# ------------------------------------------------------------------
+
 st.markdown(
     """
     <style>
@@ -38,6 +37,7 @@ st.markdown(
         --mb-bg-secondary: #F4F6F9;
         --mb-text: #111827;
         --mb-border: #E2E8F0;
+        --mb-hover-bg: #E6F0FA;
     }
 
     /* Fundo da aplicação */
@@ -115,15 +115,18 @@ st.markdown(
         background-color: #004C99 !important;
     }
 
-    /* Botões secundários com hover em azul claro */
+    /* Botões secundários com hover em azul claro (fundo + texto, sem alterar a borda) */
     .stButton > button {
         font-family: 'Plus Jakarta Sans', sans-serif !important;
         border-radius: 8px !important;
-        transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
+        transition: background-color 0.15s ease, color 0.15s ease !important;
     }
     .stButton > button:not([kind="primary"]):hover {
-        background-color: #E6F0FA !important;
-        border-color: var(--mb-primary) !important;
+        background-color: var(--mb-hover-bg) !important;
+        color: var(--mb-primary) !important;
+    }
+    .stButton > button:not([kind="primary"]):hover p,
+    .stButton > button:not([kind="primary"]):hover span {
         color: var(--mb-primary) !important;
     }
 
@@ -133,43 +136,81 @@ st.markdown(
         border-radius: 10px !important;
     }
     div[data-testid="stExpander"] summary:hover {
-        background-color: #E6F0FA !important;
+        background-color: var(--mb-hover-bg) !important;
+    }
+    div[data-testid="stExpander"] summary:hover p,
+    div[data-testid="stExpander"] summary:hover span {
+        color: var(--mb-primary) !important;
     }
 
-    /* Abas, com hover em azul claro */
+    /* Abas, com hover em azul claro (fundo + texto) */
     button[data-baseweb="tab"] {
         font-family: 'Plus Jakarta Sans', sans-serif !important;
         font-weight: 600 !important;
         border-radius: 8px 8px 0 0 !important;
     }
     button[data-baseweb="tab"]:hover {
-        background-color: #E6F0FA !important;
+        background-color: var(--mb-hover-bg) !important;
+    }
+    button[data-baseweb="tab"]:hover p {
+        color: var(--mb-primary) !important;
     }
 
-    /* Itens de dropdown (selectbox / multiselect) */
+    /* Caixas de seleção (selectbox) — inclui os "cards" com nome de PDF e a
+       lista de perguntas sugeridas: hover em azul claro, com borda e texto azuis */
+    [data-baseweb="select"] > div {
+        transition: border-color 0.15s ease, background-color 0.15s ease !important;
+    }
+    [data-baseweb="select"] > div:hover {
+        border-color: var(--mb-primary) !important;
+        background-color: var(--mb-hover-bg) !important;
+    }
+    [data-baseweb="select"] > div:hover * {
+        color: var(--mb-primary) !important;
+    }
+
+    /* Itens de dropdown (selectbox / multiselect), com fundo e texto azuis no hover */
     li[role="option"]:hover,
     [data-baseweb="menu"] li:hover {
-        background-color: #E6F0FA !important;
+        background-color: var(--mb-hover-bg) !important;
+    }
+    li[role="option"]:hover *,
+    [data-baseweb="menu"] li:hover * {
+        color: var(--mb-primary) !important;
     }
 
     /* Botão de recolher/expandir a sidebar */
     [data-testid="stSidebarCollapseButton"]:hover,
     [data-testid="stSidebarCollapsedControl"]:hover,
     [data-testid="baseButton-headerNoPadding"]:hover {
-        background-color: #E6F0FA !important;
+        background-color: var(--mb-hover-bg) !important;
         border-radius: 6px !important;
+    }
+    [data-testid="stSidebarCollapseButton"]:hover span,
+    [data-testid="stSidebarCollapsedControl"]:hover span {
+        color: var(--mb-primary) !important;
     }
 
     /* Checkboxes e radios fora da sidebar (ex: dentro de formulários) */
     div[data-testid="stCheckbox"] label:hover,
     div[data-testid="stRadio"] label:hover {
-        background-color: #E6F0FA !important;
+        background-color: var(--mb-hover-bg) !important;
         border-radius: 6px !important;
+    }
+    div[data-testid="stCheckbox"] label:hover p,
+    div[data-testid="stRadio"] label:hover p {
+        color: var(--mb-primary) !important;
     }
 
     /* Cabeçalho de itens no popover (ex: vetor de embedding completo) */
     [data-baseweb="popover"] button:hover {
-        background-color: #E6F0FA !important;
+        background-color: var(--mb-hover-bg) !important;
+        color: var(--mb-primary) !important;
+    }
+
+    /* Slider (thumb arrastável) com hover em azul claro */
+    [data-testid="stSlider"] [role="slider"]:hover {
+        box-shadow: 0 0 0 8px var(--mb-hover-bg) !important;
     }
 
     /* ---------------------------------------------------------
@@ -185,10 +226,13 @@ st.markdown(
         cursor: pointer !important;
     }
     [data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
-        background-color: #E6F0FA !important;
+        background-color: var(--mb-hover-bg) !important;
+    }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label:hover p {
+        color: var(--mb-primary) !important;
     }
     [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) {
-        background-color: #E6F0FA !important;
+        background-color: var(--mb-hover-bg) !important;
     }
     [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) p {
         color: var(--mb-primary) !important;

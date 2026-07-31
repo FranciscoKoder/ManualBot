@@ -1,5 +1,5 @@
 RAG_PROMPT = """
-Você é um especialista em Arduino.
+Você é um especialista em ESP32.
 
 Utilize exclusivamente o contexto abaixo.
 
@@ -22,5 +22,3 @@ Passos a serem realizados para responder à pergunta:
 Não utilize conhecimentos de fora do contexto
 
 """
-
-

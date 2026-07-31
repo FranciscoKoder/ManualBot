@@ -6,26 +6,25 @@ Sistema de perguntas e respostas (RAG) focado na documentação técnica oficial
 
 O objetivo do ManualBot é permitir consultas em linguagem natural a manuais técnicos do ESP32, fornecendo respostas fundamentadas nos documentos originais, com citação de fonte, página e trecho.
 
-Status atual: **pipeline de RAG completo e funcional de ponta a ponta** — extração, chunking, embeddings, banco vetorial, busca semântica e geração de resposta com LLM já implementados e testados. O sistema responde perguntas em linguagem natural com base exclusivamente na documentação oficial do ESP32, sempre citando a fonte.
+Status atual: **pipeline de RAG completo e orquestrado de ponta a ponta** — extração, chunking, embeddings, banco vetorial, busca semântica, geração de resposta com LLM e orquestração de fluxo já implementados e validados. O sistema responde perguntas em linguagem natural com base exclusivamente na documentação oficial do ESP32, sempre citando a fonte.
 
 Atualmente, o projeto inclui:
 
+- orquestração visual no n8n validada e integrada, consumindo a API local (`POST /perguntar`) para processar a entrada do usuário e estruturar a saída do LLM
 - extração e inspeção de PDFs com PyMuPDF, incluindo detecção de páginas escaneadas, esquemáticas ou com tabelas `src/ingestion/pdf_extract.py`
 - chunking dos documentos com RecursiveCharacterTextSplitter `src/ingestion/chunker.py`
 - geração de embeddings locais com sentence-transformers/all-MiniLM-L6-v2 `src/embeddings/embedding_factory.py`
 - banco vetorial persistente com ChromaDB `src/retrieval/vector_store.py`
-- geração de resposta com LLM (Google Gemini 3.6 Flash) a partir dos trechos recuperados, com prompt estruturado que exige fidelidade à documentação `src/llm/gemini.py`, `src/llm/prompts.py`
-- pipeline orquestrado que conecta ingestão → embeddings → banco → busca → geração de resposta `src/pipeline/rag_pipeline.py`
+- geração de resposta com LLM (Google Gemini 3.6 Flash) a partir dos trechos recuperados, com prompt estruturado que exige fidelidade estrita à documentação `src/llm/gemini.py`, `src/llm/prompts.py`
+- pipeline que conecta ingestão → embeddings → banco → busca → geração de resposta `src/pipeline/rag_pipeline.py`
 - interface em Streamlit conectada ao pipeline real, exibindo a resposta gerada e as fontes consultadas `src/app/app.py`
 - API REST (FastAPI) que expõe o pipeline para consumo externo, usada pela automação no n8n `api.py`
 - scripts standalone para rodar ingestão e validar busca via linha de comando `ingestao.py`, `validacao_busca.py`
 - notebook com os experimentos completos da Semana 2 `notebooks/semana_2_ingestao_e_busca.ipynb`
 
-> **Observação:** a automação visual no n8n (consumindo a API acima) ainda está em desenvolvimento pela equipe.
-
 ## Estrutura do projeto
 
-```
+```text
 ManualBot/
 ├── data/
 │   ├── raw/                # JSONs de análise extraída de cada PDF

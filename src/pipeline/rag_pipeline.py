@@ -88,3 +88,26 @@ class RAGPipeline:
                 "metadata": doc.metadata
             })
         return formatados
+    
+    def responder(self, pergunta):
+        """
+        Executa a busca semântica e gera uma resposta utilizando o modelo LLM.
+        """
+        
+        """----------------------------------Aqui fica a informação das páginas-----------------------"""
+        resultados = self.consultar(pergunta, top_k=3)
+        contexto = "\n\n".join([f"Documento: {res['documento']}, Página: {res['pagina']}\nConteúdo: {res['conteudo']}" for res in resultados])
+        
+        from llm.prompts import RAG_PROMPT
+        from llm.gemini import LLM
+        
+        prompt = RAG_PROMPT.format(context=contexto, question=pergunta)
+        
+        resposta = LLM.generate(prompt)
+        
+        return {
+            "pergunta": pergunta,
+            "resposta": resposta,
+            "contexto": contexto,
+            "resultados": resultados
+        }

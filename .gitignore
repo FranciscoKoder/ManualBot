@@ -5,6 +5,7 @@ __pycache__/
 .venv/
 env/
 venv/
+.env
 
 # Base de Dados Vetorial gerada dinamicamente (ChromaDB > 100MB)
 data/chroma_db/

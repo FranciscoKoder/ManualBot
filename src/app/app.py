@@ -559,12 +559,13 @@ else:
         else:
             with st.spinner("Buscando vetores mais similares no ChromaDB..."):
                 try:
-                    resultados = pipeline.consultar(pergunta, top_k=top_k)
+                    """resultados = pipeline.consultar(pergunta, top_k=top_k)"""
+                    resposta = pipeline.responder(pergunta)
                     st.session_state.historico.append(pergunta)
 
-                    st.subheader(f"Trechos mais relevantes encontrados (Top {len(resultados)})")
+                    st.subheader(f"Trechos mais relevantes encontrados (Top {len(dados(resposta))})")
 
-                    for i, res in enumerate(resultados, 1):
+                    """for i, res in enumerate(resultados, 1):
                         with st.container(border=True):
                             col_head1, col_head2 = st.columns([3, 1])
                             with col_head1:
@@ -573,7 +574,7 @@ else:
                                 st.caption(f"Distância Coseno: `{res['score_distancia']:.4f}`")
 
                             st.markdown("**Trecho recuperado:**")
-                            st.info(res["conteudo"])
+                            st.info(res["conteudo"])"""
 
                 except Exception as e:
                     st.error(f"Erro durante a busca semântica: {str(e)}")

@@ -285,7 +285,7 @@ if "docs_selecionados" not in st.session_state:
 
 # Sidebar - Navegação
 st.sidebar.title("ManualBot")
-st.sidebar.caption("Assistente RAG para documentação do ESP32 — Semana 2")
+st.sidebar.caption("Assistente RAG para documentação do ESP32 — Semana 3")
 
 banco_status = "Ativo (ChromaDB)" if pipeline.vector_store is not None else "Não construído"
 st.sidebar.markdown(f"**Status do Banco Vetorial:** {banco_status}")
@@ -313,51 +313,64 @@ if pagina == "Início":
         """
     )
 
-    st.markdown("### Status da Entrega - Semana 2")
-    col1, col2, col3, col4 = st.columns(4)
+    st.markdown("### Status da Entrega - Semana 3")
+    col1, col2, col3, col4, col5 = st.columns(5)
 
     pdfs_reais = carregar_pdfs_reais()
     col1.metric("PDFs na Base", len(pdfs_reais))
-    col2.metric("Chunk Size / Overlap", "800 / 100")
+    col2.metric("Chunk Size / Overlap", "900 / 150")
     col3.metric("Modelo de Embeddings", "all-MiniLM-L6-v2")
+    col4.metric("Modelo de LLM", "Gemini 3.6 Flash")
 
     tamanho_mb = obter_tamanho_banco(pipeline.pasta_chroma)
-    col4.metric("Tamanho ChromaDB", f"{tamanho_mb:.1f} MB")
+    col5.metric("Tamanho ChromaDB", f"{tamanho_mb:.1f} MB")
 
     st.divider()
 
-    st.markdown("### Funcionalidades da Semana 2")
+    st.markdown("### Funcionalidades da Semana 3")
     col_a, col_b = st.columns(2)
 
     with col_a:
         st.info(
             "**Ingestão & Chunking**\n\n"
             "Processamento automático dos PDFs usando `RecursiveCharacterTextSplitter` "
-            "com tamanho de 800 caracteres e sobreposição de 100 caracteres."
+            "com tamanho de 900 caracteres e sobreposição de 150 caracteres."
         )
         st.info(
             "**Embeddings & Banco Vetorial**\n\n"
             "Vetorização com HuggingFace (`sentence-transformers/all-MiniLM-L6-v2`) "
             "e persistência no ChromaDB local (`data/chroma_db`)."
         )
+        st.success(
+            "**Geração de Resposta com LLM**\n\n"
+            "Os trechos recuperados são enviados ao **Gemini 3.6 Flash**, junto de um prompt "
+            "estruturado que exige respostas fundamentadas exclusivamente na documentação, "
+            "sempre citando documento e página."
+        )
 
     with col_b:
-        st.success(
+        st.warning(
+            "**Busca Semântica + Resposta em Tempo Real**\n\n"
+            "Na aba **Consultar Manual**, a pergunta é buscada no banco vetorial e a resposta "
+            "final é gerada pelo LLM com base nos trechos mais relevantes."
+        )
+        st.info(
+            "**API para Integração Externa**\n\n"
+            "O endpoint `POST /perguntar` (arquivo `api.py`, via FastAPI) expõe o pipeline "
+            "completo para consumo externo — usado pela automação no **n8n**."
+        )
+        st.info(
             "**Inspeção Visual do Banco Vetorial**\n\n"
             "Na aba **Inspeção do Banco Vetorial**, visualize a quantidade exata de chunks "
             "indexados, amostras de texto e os vetores numéricos de 384 dimensões em tempo real."
         )
-        st.warning(
-            "**Busca Semântica em Tempo Real**\n\n"
-            "Na aba **Consultar Manual**, realize consultas semânticas sobre a documentação "
-            "com ranking por similaridade/distância."
-        )
+
 
 # ----------------------------------------------------
 # Tela 2: Documentos & Ingestão
 # ----------------------------------------------------
 elif pagina == "Documentos & Ingestão":
-    st.title("Gerenciamento de Documentos & Ingestão (Semana 2)")
+    st.title("Gerenciamento de Documentos & Ingestão")
     st.write("Gerencie a base de PDFs, execute o pipeline de Chunking + Embeddings e inspecione os arquivos.")
 
     pdfs_reais = carregar_pdfs_reais()
@@ -372,20 +385,20 @@ elif pagina == "Documentos & Ingestão":
 
     st.divider()
 
-    # Seção de Ingestão (Semana 2 - Parâmetros Estáticos Fixo)
+    # Seção de Ingestão (Chunking Estático Fixo)
     st.subheader("Processar Ingestão (Chunking Estático + Embeddings + ChromaDB)")
     st.markdown(
-        "O pipeline da Semana 2 utiliza **Chunking Estático Fixo** padronizado especificamente para a "
+        "O pipeline utiliza **Chunking Estático Fixo** padronizado especificamente para a "
         "documentação do ESP32 e o modelo `all-MiniLM-L6-v2`."
     )
 
     col_cfg1, col_cfg2, col_cfg3 = st.columns(3)
-    col_cfg1.metric("Tamanho do Chunk (Estático)", "800 caracteres")
-    col_cfg2.metric("Overlap (Estático)", "100 caracteres")
+    col_cfg1.metric("Tamanho do Chunk (Estático)", "900 caracteres")
+    col_cfg2.metric("Overlap (Estático)", "150 caracteres")
     col_cfg3.metric("Estratégia", "RecursiveCharacterSplitter")
 
-    chunk_size = 800
-    chunk_overlap = 100
+    chunk_size = 900
+    chunk_overlap = 150
 
     if st.button("Executar Ingestão & Construir Banco Vetorial", type="primary", use_container_width=True):
         with st.spinner("Processando PDFs, gerando embeddings e salvando no ChromaDB... Isso pode levar alguns segundos."):
@@ -517,10 +530,11 @@ elif pagina == "Inspeção do Banco Vetorial":
 # Tela 4: Consultar Manual (Busca Semântica Real)
 # ----------------------------------------------------
 else:
-    st.title("Consultar Manual — Busca Semântica Real (Semana 2)")
+    st.title("Consultar Manual — Resposta com IA (RAG)")
     st.markdown(
-        "Faça uma pergunta sobre o ESP32. O sistema utilizará os **embeddings** "
-        "e o **ChromaDB** para recuperar os trechos mais relevantes da documentação."
+        "Faça uma pergunta sobre o ESP32. O sistema busca os **embeddings** mais relevantes "
+        "no **ChromaDB** e envia esses trechos para o **Gemini** gerar uma resposta fundamentada, "
+        "sempre citando documento e página."
     )
 
     if pipeline.vector_store is None:
@@ -535,7 +549,7 @@ else:
             st.rerun()
 
     pergunta_sugerida = st.selectbox(
-        "Sugestões de perguntas de teste (Semana 1 / 2):",
+        "Sugestões de perguntas de teste:",
         [
             "Selecione ou digite uma pergunta abaixo...",
             "What is the operating voltage range for the ESP32?",
@@ -557,26 +571,34 @@ else:
         if not pergunta.strip():
             st.warning("Por favor, digite uma pergunta válida.")
         else:
-            with st.spinner("Buscando vetores mais similares no ChromaDB..."):
+            with st.spinner("Buscando trechos relevantes e gerando resposta com o Gemini..."):
                 try:
-                    resposta = pipeline.responder(pergunta,top_k)
+                    resposta = pipeline.responder(pergunta, top_k)
                     st.session_state.historico.append(pergunta)
 
-                    # Exibe a resposta do bot
-                    st.write(resposta["resposta"])
+                    # Resposta gerada pelo LLM, em destaque
+                    st.markdown("### Resposta")
+                    with st.container(border=True):
+                        st.markdown(resposta["resposta"])
 
-                    # Quantidade de trechos recuperados do retriever
+                    st.divider()
+
+                    # Trechos-fonte que fundamentaram a resposta
                     qtd_trechos = len(resposta["resultados"])
-                    st.subheader(f"Trechos mais relevantes encontrados (Top {qtd_trechos})")
+                    st.markdown(f"### Fontes consultadas ({qtd_trechos} trechos)")
+                    st.caption("Trechos recuperados da documentação que embasaram a resposta acima.")
 
-                    # Exibe os trechos
-                    for res in resposta["resultados"]:
-                        st.markdown(f"**Doc:** {res['documento']} | **Pág:** {res['pagina']}")
-                        st.write(res['conteudo'])
-                        st.divider()
+                    for i, res in enumerate(resposta["resultados"], 1):
+                        with st.container(border=True):
+                            col_head1, col_head2 = st.columns([3, 1])
+                            with col_head1:
+                                st.markdown(f"**{i}. Documento:** `{res['documento']}` — **Página:** {res['pagina']}")
+                            with col_head2:
+                                st.caption(f"Distância Coseno: `{res['score_distancia']:.4f}`")
+                            st.info(res["conteudo"])
 
                 except Exception as e:
-                    st.error(f"Erro durante a busca semântica: {str(e)}")
+                    st.error(f"Erro durante a busca semântica ou geração de resposta: {str(e)}")
 
     if st.session_state.historico:
         with st.expander("Histórico de perguntas da sessão"):

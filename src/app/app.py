@@ -559,22 +559,21 @@ else:
         else:
             with st.spinner("Buscando vetores mais similares no ChromaDB..."):
                 try:
-                    """resultados = pipeline.consultar(pergunta, top_k=top_k)"""
-                    resposta = pipeline.responder(pergunta)
+                    resposta = pipeline.responder(pergunta,top_k)
                     st.session_state.historico.append(pergunta)
 
-                    st.subheader(f"Trechos mais relevantes encontrados (Top {len(dados(resposta))})")
+                    # Exibe a resposta do bot
+                    st.write(resposta["resposta"])
 
-                    """for i, res in enumerate(resultados, 1):
-                        with st.container(border=True):
-                            col_head1, col_head2 = st.columns([3, 1])
-                            with col_head1:
-                                st.markdown(f"**{i}. Documento:** `{res['documento']}` — **Página:** {res['pagina']}")
-                            with col_head2:
-                                st.caption(f"Distância Coseno: `{res['score_distancia']:.4f}`")
+                    # Quantidade de trechos recuperados do retriever
+                    qtd_trechos = len(resposta["resultados"])
+                    st.subheader(f"Trechos mais relevantes encontrados (Top {qtd_trechos})")
 
-                            st.markdown("**Trecho recuperado:**")
-                            st.info(res["conteudo"])"""
+                    # Exibe os trechos
+                    for res in resposta["resultados"]:
+                        st.markdown(f"**Doc:** {res['documento']} | **Pág:** {res['pagina']}")
+                        st.write(res['conteudo'])
+                        st.divider()
 
                 except Exception as e:
                     st.error(f"Erro durante a busca semântica: {str(e)}")

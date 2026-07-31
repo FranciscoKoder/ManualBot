@@ -9,8 +9,8 @@ logger = logging.getLogger(__name__)
 
 def carregar_e_dividir_documentos(
     pasta_docs: Path,
-    chunk_size: int = 800,
-    chunk_overlap: int = 100
+    chunk_size: int = 900,
+    chunk_overlap: int = 150
 ) -> Tuple[List[Document], List[Document]]:
     """
     Carrega todos os PDFs presentes na pasta especificada e aplica

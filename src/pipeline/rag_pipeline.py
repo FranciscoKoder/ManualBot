@@ -89,25 +89,33 @@ class RAGPipeline:
             })
         return formatados
     
-    def responder(self, pergunta):
+    def responder(self, pergunta,top_k):
         """
         Executa a busca semântica e gera uma resposta utilizando o modelo LLM.
         """
-        
-        """----------------------------------Aqui fica a informação das páginas-----------------------"""
-        resultados = self.consultar(pergunta, top_k=3)
+        resultados = self.consultar(pergunta, top_k)
         contexto = "\n\n".join([f"Documento: {res['documento']}, Página: {res['pagina']}\nConteúdo: {res['conteudo']}" for res in resultados])
-        
+
         from llm.prompts import RAG_PROMPT
         from llm.gemini import LLM
-        
+
         prompt = RAG_PROMPT.format(context=contexto, question=pergunta)
-        
-        resposta = LLM.generate(prompt)
-        
+
+        # 1. Faz a chamada ao LLM
+        resposta_llm = LLM.invoke(prompt)
+
+        # 2. Garante a extração apenas da string do texto (ignorando a signature/extras)
+        if isinstance(resposta_llm.content, str):
+            texto_resposta = resposta_llm.content
+        elif isinstance(resposta_llm.content, list):
+            # Em algumas versões, o content pode vir como lista de blocos [{'type': 'text', 'text': '...'}]
+            texto_resposta = "".join([bloco.get("text", "") for bloco in resposta_llm.content if isinstance(bloco, dict)])
+        else:
+            texto_resposta = str(resposta_llm.content)
+
         return {
             "pergunta": pergunta,
-            "resposta": resposta,
+            "resposta": texto_resposta.strip(),  # Retorna puramente a string "Desculpe, não encontrei..."
             "contexto": contexto,
             "resultados": resultados
         }

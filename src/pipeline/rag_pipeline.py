@@ -11,6 +11,9 @@ from retrieval.vector_store import (
     realizar_busca_semantica,
 )
 
+from llm.prompts import RAG_PROMPT
+from llm.gemini import LLM
+
 logger = logging.getLogger(__name__)
 
 class RAGPipeline:
@@ -88,16 +91,13 @@ class RAGPipeline:
                 "metadata": doc.metadata
             })
         return formatados
-    
+
     def responder(self, pergunta,top_k):
         """
         Executa a busca semântica e gera uma resposta utilizando o modelo LLM.
         """
         resultados = self.consultar(pergunta, top_k)
         contexto = "\n\n".join([f"Documento: {res['documento']}, Página: {res['pagina']}\nConteúdo: {res['conteudo']}" for res in resultados])
-
-        from llm.prompts import RAG_PROMPT
-        from llm.gemini import LLM
 
         prompt = RAG_PROMPT.format(context=contexto, question=pergunta)
 

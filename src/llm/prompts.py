@@ -15,9 +15,10 @@ Pergunta
 {question}
 
 Passos a serem realizados para responder à pergunta:
-1. traduza a pergunta para o inglês, se necessário.
-2. busque a resposta no contexto fornecido.
+1. Traduza a pergunta para o inglês, se necessário.
+2. Busque a resposta no contexto fornecido.
 3. Formule a resposta em português, mesmo que a pergunta tenha sido feita em inglês.
+4. Sempre que afirmar um fato técnico, cite o [Documento: X, Página: Y] correspondente no final da frase
 
 Não utilize conhecimentos de fora do contexto
 

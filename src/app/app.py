@@ -250,6 +250,20 @@ st.markdown(
         opacity: 0 !important;
         border: none !important;
     }
+
+    /* Estilos Customizados para o Chat do ManualBot */
+    [data-testid="stChatMessage"] {
+        border-radius: 12px !important;
+        border: 1px solid var(--mb-border) !important;
+        background-color: var(--mb-bg) !important;
+        padding: 1rem !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.03) !important;
+    }
+    
+    /* Personaliza o estilo de blockquote (usado nos status/expanders) */
+    blockquote {
+        border-left-color: var(--mb-primary) !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -290,86 +304,28 @@ st.sidebar.caption("Assistente RAG para documentação do ESP32 — Semana 3")
 banco_status = "Ativo (ChromaDB)" if pipeline.vector_store is not None else "Não construído"
 st.sidebar.markdown(f"**Status do Banco Vetorial:** {banco_status}")
 
+st.sidebar.markdown("### Configurações")
+modelo_selecionado = st.sidebar.selectbox(
+    "Cérebro da IA",
+    ["Gemini 3.6 Flash (Nuvem)"]
+)
+st.session_state.modelo_selecionado = modelo_selecionado
+
+st.sidebar.markdown("### Navegação")
 pagina = st.sidebar.radio(
     "Navegação",
     [
-        "Início",
+        "Chatbot: Consultar Manual",
         "Documentos & Ingestão",
-        "Inspeção do Banco Vetorial",
-        "Consultar Manual (Busca Semântica)"
+        "Inspeção do Banco Vetorial"
     ],
     label_visibility="collapsed"
 )
 
 # ----------------------------------------------------
-# Tela 1: Início
+# Tela: Documentos & Ingestão
 # ----------------------------------------------------
-if pagina == "Início":
-    st.title("Bem-vindo ao ManualBot — ESP32")
-    st.markdown(
-        """
-        O **ManualBot** é um sistema RAG (Retrieval-Augmented Generation) projetado para
-        responder perguntas técnicas sobre o **ESP32** com base na sua documentação oficial.
-        """
-    )
-
-    st.markdown("### Status da Entrega - Semana 3")
-    col1, col2, col3, col4, col5 = st.columns(5)
-
-    pdfs_reais = carregar_pdfs_reais()
-    col1.metric("PDFs na Base", len(pdfs_reais))
-    col2.metric("Chunk Size / Overlap", "900 / 150")
-    col3.metric("Modelo de Embeddings", "all-MiniLM-L6-v2")
-    col4.metric("Modelo de LLM", "Gemini 3.6 Flash")
-
-    tamanho_mb = obter_tamanho_banco(pipeline.pasta_chroma)
-    col5.metric("Tamanho ChromaDB", f"{tamanho_mb:.1f} MB")
-
-    st.divider()
-
-    st.markdown("### Funcionalidades da Semana 3")
-    col_a, col_b = st.columns(2)
-
-    with col_a:
-        st.info(
-            "**Ingestão & Chunking**\n\n"
-            "Processamento automático dos PDFs usando `RecursiveCharacterTextSplitter` "
-            "com tamanho de 900 caracteres e sobreposição de 150 caracteres."
-        )
-        st.info(
-            "**Embeddings & Banco Vetorial**\n\n"
-            "Vetorização com HuggingFace (`sentence-transformers/all-MiniLM-L6-v2`) "
-            "e persistência no ChromaDB local (`data/chroma_db`)."
-        )
-        st.success(
-            "**Geração de Resposta com LLM**\n\n"
-            "Os trechos recuperados são enviados ao **Gemini 3.6 Flash**, junto de um prompt "
-            "estruturado que exige respostas fundamentadas exclusivamente na documentação, "
-            "sempre citando documento e página."
-        )
-
-    with col_b:
-        st.warning(
-            "**Busca Semântica + Resposta em Tempo Real**\n\n"
-            "Na aba **Consultar Manual**, a pergunta é buscada no banco vetorial e a resposta "
-            "final é gerada pelo LLM com base nos trechos mais relevantes."
-        )
-        st.info(
-            "**API para Integração Externa**\n\n"
-            "O endpoint `POST /perguntar` (arquivo `api.py`, via FastAPI) expõe o pipeline "
-            "completo para consumo externo — usado pela automação no **n8n**."
-        )
-        st.info(
-            "**Inspeção Visual do Banco Vetorial**\n\n"
-            "Na aba **Inspeção do Banco Vetorial**, visualize a quantidade exata de chunks "
-            "indexados, amostras de texto e os vetores numéricos de 384 dimensões em tempo real."
-        )
-
-
-# ----------------------------------------------------
-# Tela 2: Documentos & Ingestão
-# ----------------------------------------------------
-elif pagina == "Documentos & Ingestão":
+if pagina == "Documentos & Ingestão":
     st.title("Gerenciamento de Documentos & Ingestão")
     st.write("Gerencie a base de PDFs, execute o pipeline de Chunking + Embeddings e inspecione os arquivos.")
 
@@ -389,7 +345,7 @@ elif pagina == "Documentos & Ingestão":
     st.subheader("Processar Ingestão (Chunking Estático + Embeddings + ChromaDB)")
     st.markdown(
         "O pipeline utiliza **Chunking Estático Fixo** padronizado especificamente para a "
-        "documentação do ESP32 e o modelo `all-MiniLM-L6-v2`."
+        "documentação do ESP32 e o modelo `gemini-3.6 Flash`."
     )
 
     col_cfg1, col_cfg2, col_cfg3 = st.columns(3)
@@ -527,80 +483,74 @@ elif pagina == "Inspeção do Banco Vetorial":
             st.error(f"Erro ao acessar dados do ChromaDB: {str(e)}")
 
 # ----------------------------------------------------
-# Tela 4: Consultar Manual (Busca Semântica Real)
+# Tela Principal: Chatbot Customizado
 # ----------------------------------------------------
 else:
-    st.title("Consultar Manual — Resposta com IA (RAG)")
-    st.markdown(
-        "Faça uma pergunta sobre o ESP32. O sistema busca os **embeddings** mais relevantes "
-        "no **ChromaDB** e envia esses trechos para o **Gemini** gerar uma resposta fundamentada, "
-        "sempre citando documento e página."
-    )
-
+    st.title("ManualBot - Atendimento Técnico")
+    
+    if st.session_state.modelo_selecionado == "Llama 3 (Ollama Local)":
+        st.info("💡 A integração local do Llama 3 será implementada em breve! Operando via Gemini como fallback de segurança.")
+    
     if pipeline.vector_store is None:
-        st.warning(
-            "O banco vetorial ainda não foi inicializado nesta sessão. "
-            "Você pode clicar no botão abaixo para carregar/gerar o banco vetorial."
-        )
-        if st.button("Carregar/Construir Banco Vetorial Agora"):
-            with st.spinner("Inicializando modelo de embeddings e ChromaDB..."):
-                if not pipeline.carregar_banco_existente():
-                    pipeline.executar_ingestao()
-            st.rerun()
-
-    pergunta_sugerida = st.selectbox(
-        "Sugestões de perguntas de teste:",
-        [
-            "Selecione ou digite uma pergunta abaixo...",
-            "What is the operating voltage range for the ESP32?",
-            "How many GPIO pins does the ESP32 have?",
-            "What are the Wi-Fi protocols supported by the ESP32?",
-            "How does deep sleep mode work on ESP32?",
-            "What is the maximum CPU frequency of the ESP32?"
-        ]
-    )
-
-    valor_inicial = pergunta_sugerida if pergunta_sugerida != "Selecione ou digite uma pergunta abaixo..." else ""
-
-    pergunta = st.text_input("Sua pergunta:", value=valor_inicial, placeholder="Ex: What is the operating voltage of ESP32?")
-    top_k = st.slider("Quantidade de trechos a recuperar (Top K):", min_value=1, max_value=6, value=3)
-
-    consultar = st.button("Executar Busca Semântica", type="primary", use_container_width=True)
-
-    if consultar:
-        if not pergunta.strip():
-            st.warning("Por favor, digite uma pergunta válida.")
-        else:
-            with st.spinner("Buscando trechos relevantes e gerando resposta com o Gemini..."):
-                try:
-                    resposta = pipeline.responder(pergunta, top_k)
-                    st.session_state.historico.append(pergunta)
-
-                    # Resposta gerada pelo LLM, em destaque
-                    st.markdown("### Resposta")
-                    with st.container(border=True):
-                        st.markdown(resposta["resposta"])
-
-                    st.divider()
-
-                    # Trechos-fonte que fundamentaram a resposta
-                    qtd_trechos = len(resposta["resultados"])
-                    st.markdown(f"### Fontes consultadas ({qtd_trechos} trechos)")
-                    st.caption("Trechos recuperados da documentação que embasaram a resposta acima.")
-
-                    for i, res in enumerate(resposta["resultados"], 1):
-                        with st.container(border=True):
-                            col_head1, col_head2 = st.columns([3, 1])
-                            with col_head1:
-                                st.markdown(f"**{i}. Documento:** `{res['documento']}` — **Página:** {res['pagina']}")
-                            with col_head2:
-                                st.caption(f"Distância Coseno: `{res['score_distancia']:.4f}`")
+        st.warning("⚠️ O banco vetorial não está carregado. Por favor, vá em 'Documentos & Ingestão' e construa a base antes de iniciar o chat.")
+    else:
+        if "messages" not in st.session_state:
+            # Mensagem de boas-vindas do bot
+            st.session_state.messages = [
+                {
+                    "role": "assistant",
+                    "content": "Olá! Sou o **ManualBot**, seu assistente especialista em ESP32. Como posso ajudar no seu projeto hoje?"
+                }
+            ]
+            
+        # Renderizar o histórico de mensagens do chat
+        for msg in st.session_state.messages:
+            avatar = "👤" if msg["role"] == "user" else "🤖"
+            with st.chat_message(msg["role"], avatar=avatar):
+                st.markdown(msg["content"])
+                # Se a mensagem tiver fontes (do assistente), renderiza os expanders
+                if "fontes" in msg and msg["fontes"]:
+                    with st.expander("📚 Ver Documentação Consultada"):
+                        for i, res in enumerate(msg["fontes"], 1):
+                            st.markdown(f"**{i}. Documento:** `{res['documento']}` — **Página:** {res['pagina']}")
+                            st.caption(f"Relevância (Distância): {res['score_distancia']:.4f}")
                             st.info(res["conteudo"])
 
-                except Exception as e:
-                    st.error(f"Erro durante a busca semântica ou geração de resposta: {str(e)}")
-
-    if st.session_state.historico:
-        with st.expander("Histórico de perguntas da sessão"):
-            for h in reversed(st.session_state.historico):
-                st.write(f"• {h}")
+        # Input de chat na parte inferior (Fixo)
+        if prompt := st.chat_input("Digite sua dúvida técnica sobre o ESP32..."):
+            # 1. Adiciona a pergunta e exibe na tela
+            st.session_state.messages.append({"role": "user", "content": prompt})
+            with st.chat_message("user", avatar="👤"):
+                st.markdown(prompt)
+                
+            # 2. Exibe o loader interativo e gera a resposta
+            with st.chat_message("assistant", avatar="🤖"):
+                with st.status("Consultando base de conhecimento...", expanded=True) as status:
+                    st.write("🔍 Procurando contextos no banco vetorial (ChromaDB)...")
+                    try:
+                        resposta = pipeline.responder(prompt, top_k=3)
+                        status.update(label="Resposta gerada com sucesso!", state="complete", expanded=False)
+                        
+                        st.markdown(resposta["resposta"])
+                        
+                        fontes = resposta["resultados"]
+                        if fontes:
+                            with st.expander("📚 Ver Documentação Consultada"):
+                                for i, res in enumerate(fontes, 1):
+                                    st.markdown(f"**{i}. Documento:** `{res['documento']}` — **Página:** {res['pagina']}")
+                                    st.caption(f"Relevância (Distância): {res['score_distancia']:.4f}")
+                                    st.info(res["conteudo"])
+                                    
+                        st.session_state.messages.append({
+                            "role": "assistant", 
+                            "content": resposta["resposta"],
+                            "fontes": fontes
+                        })
+                    except Exception as e:
+                        status.update(label="Erro ao buscar informações", state="error", expanded=False)
+                        msg_erro = f"Ocorreu um erro interno: {str(e)}"
+                        st.error(msg_erro)
+                        st.session_state.messages.append({
+                            "role": "assistant", 
+                            "content": msg_erro
+                        })

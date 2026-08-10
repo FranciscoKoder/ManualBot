@@ -307,9 +307,18 @@ st.sidebar.markdown(f"**Status do Banco Vetorial:** {banco_status}")
 st.sidebar.markdown("### Configurações")
 modelo_selecionado = st.sidebar.selectbox(
     "Cérebro da IA",
-    ["Gemini 3.6 Flash (Nuvem)"]
+    ["Gemini 3.6 Flash (Nuvem)", "Llama 3 (Ollama Local)"]
 )
 st.session_state.modelo_selecionado = modelo_selecionado
+
+top_k_selecionado = st.sidebar.slider(
+    "Trechos a recuperar (Top-K)",
+    min_value=1,
+    max_value=10,
+    value=5,
+    help="Aumente este valor se tiver muitos PDFs e a IA não estiver achando a informação."
+)
+st.session_state.top_k = top_k_selecionado
 
 st.sidebar.markdown("### Navegação")
 pagina = st.sidebar.radio(
@@ -528,7 +537,7 @@ else:
                 with st.status("Consultando base de conhecimento...", expanded=True) as status:
                     st.write("🔍 Procurando contextos no banco vetorial (ChromaDB)...")
                     try:
-                        resposta = pipeline.responder(prompt, top_k=3)
+                        resposta = pipeline.responder(prompt, top_k=st.session_state.top_k)
                         status.update(label="Resposta gerada com sucesso!", state="complete", expanded=False)
                         
                         st.markdown(resposta["resposta"])

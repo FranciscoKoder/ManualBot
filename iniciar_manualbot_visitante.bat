@@ -9,6 +9,23 @@ echo Ele usa uma conta pre-configurada do Ngrok.
 echo Nao feche as telas enquanto estiver usando!
 echo.
 
+IF NOT EXIST ".venv\" (
+    echo ===================================================
+    echo [!] PRIMEIRA EXECUCAO DETECTADA!
+    echo [!] Preparando o sistema automaticamente...
+    echo [!] Instalando as dependencias em background.
+    echo [!] Aguarde, isso pode levar 1 ou 2 minutos...
+    echo ===================================================
+    python -m venv .venv
+    call .venv\Scripts\activate
+    pip install -r requirements.txt > nul 2>&1
+    echo [!] Tudo instalado com sucesso! Iniciando os modulos...
+    echo.
+) ELSE (
+    echo [!] Sistema ja configurado. Iniciando os modulos...
+    echo.
+)
+
 echo [1/3] Iniciando a API (Servidor Uvicorn)...
 start "API do ManualBot (Uvicorn)" cmd /k "call .venv\Scripts\activate && uvicorn api:app --port 8000"
 timeout /t 3 /nobreak > nul
